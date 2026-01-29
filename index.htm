@@ -3,425 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supermarket Sultan 2.0 🛒</title>
+    <title>Akademi Matematika Peri ✨</title>
     <style>
         :root {
-            --primary: #4caf50; /* Green */
-            --accent: #ff9800; /* Orange */
-            --aqila: #e91e63;
-            --madina: #009688;
-            --bg: #f4f7f6;
-            --text: #333;
+            --pink-soft: #ffdde1;
+            --pink-bold: #ffafbd;
+            --purple: #a18cd1;
+            --accent: #f43f5e;
+            --dark: #1e293b;
+            --white: #ffffff;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+        body { 
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            background: linear-gradient(to bottom, var(--pink-soft), #ee9ae5); 
+            margin: 0; min-height: 100vh; color: #1e293b;
+            overflow-x: hidden;
         }
 
-        /* LAYOUT UTAMA */
-        .app-container {
-            display: flex;
-            flex: 1;
-            overflow: hidden; /* Biar scroll terpisah */
+        .main-nav {
+            background: var(--white); padding: 15px; display: flex;
+            justify-content: center; gap: 10px; position: sticky;
+            top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* KOLOM KIRI: PRODUK */
-        .product-section {
-            flex: 2;
-            padding: 20px;
-            overflow-y: auto;
-            border-right: 2px solid #ddd;
+        .nav-btn {
+            padding: 12px 20px; border: none; border-radius: 25px;
+            cursor: pointer; font-weight: bold; transition: 0.3s;
+            background: #f1f5f9; color: var(--purple); font-size: 0.9rem;
         }
 
-        .header {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .nav-btn.active { background: var(--pink-bold); color: white; }
 
-        .mode-btn {
-            padding: 10px 20px; border: none; border-radius: 20px;
-            cursor: pointer; font-weight: bold; color: white; opacity: 0.6;
-            transition: 0.3s;
-        }
-        .mode-btn.active { opacity: 1; transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .btn-aqila { background: var(--aqila); }
-        .btn-madina { background: var(--madina); }
-
-        .grid-products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
-        }
+        .container { max-width: 850px; margin: 20px auto; padding: 0 20px; }
 
         .card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: 0.2s;
-            cursor: pointer;
-            border: 2px solid transparent;
-            position: relative;
-        }
-        .card:hover { transform: translateY(-3px); border-color: var(--primary); }
-        .card:active { transform: scale(0.95); }
-        
-        .card-emoji { font-size: 3rem; margin-bottom: 5px; display: block; }
-        .card-title { font-weight: bold; font-size: 1rem; margin-bottom: 5px; }
-        .card-price { color: var(--primary); font-weight: bold; background: #e8f5e9; padding: 2px 8px; border-radius: 4px; }
-        
-        .badge-qty {
-            position: absolute; top: -10px; right: -10px;
-            background: var(--accent); color: white;
-            width: 30px; height: 30px; border-radius: 50%;
-            display: none; align-items: center; justify-content: center;
-            font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            background: var(--white); padding: 30px; border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 25px;
+            border: 5px solid var(--white);
         }
 
-        /* KOLOM KANAN: KERANJANG */
-        .cart-section {
-            flex: 1;
-            background: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.05);
-            min-width: 300px;
+        /* STYLE BELAJAR */
+        .math-display {
+            font-family: 'Courier New', monospace;
+            font-size: 2.2rem; text-align: right; width: fit-content;
+            margin: 20px auto; padding: 20px 40px;
+            background: var(--dark); color: #f8fafc;
+            border-radius: 20px; letter-spacing: 10px; position: relative;
         }
 
-        .cart-header { font-size: 1.5rem; font-weight: bold; border-bottom: 2px dashed #ccc; padding-bottom: 10px; margin-bottom: 10px; }
-        
-        .cart-items { flex: 1; overflow-y: auto; }
-        
-        .cart-row {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.95rem;
-        }
-        .cart-item-name { font-weight: bold; }
-        .cart-control { display: flex; align-items: center; gap: 10px; }
-        .btn-mini { 
-            background: #eee; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; font-weight: bold;
-        }
-        .btn-mini:hover { background: #ddd; }
-
-        .cart-footer { margin-top: 20px; border-top: 2px solid #333; padding-top: 15px; }
-        .total-display { font-size: 1.5rem; font-weight: bold; text-align: right; color: var(--primary); margin-bottom: 15px; }
-        
-        .btn-checkout {
-            width: 100%; padding: 15px; border: none; border-radius: 8px;
-            background: var(--primary); color: white; font-size: 1.2rem; font-weight: bold;
-            cursor: pointer; transition: 0.2s;
-        }
-        .btn-checkout:hover { background: #388e3c; }
-        .btn-checkout:disabled { background: #ccc; cursor: not-allowed; }
-
-        /* MODAL KASIR */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 100;
-            display: none; justify-content: center; align-items: center;
-        }
-        .receipt-box {
-            background: white; width: 90%; max-width: 400px; padding: 30px;
-            border-radius: 10px; text-align: center; animation: popUp 0.3s;
-            border-top: 10px solid var(--accent);
-            font-family: 'Courier New', Courier, monospace;
-        }
-        @keyframes popUp { from{transform:scale(0.8); opacity:0} to{transform:scale(1); opacity:1} }
-
-        .bill-row { display: flex; justify-content: space-between; font-size: 1.2rem; margin: 10px 0; }
-        .pay-input {
-            width: 80%; padding: 10px; font-size: 1.5rem; text-align: center;
-            border: 2px solid var(--primary); border-radius: 8px; margin: 15px 0;
+        .place-value-labels {
+            font-size: 0.7rem; color: #94a3b8; text-align: center;
+            letter-spacing: 12px; margin-bottom: 10px;
         }
 
-        /* RESPONSIVE UTK HP */
-        @media (max-width: 768px) {
-            .app-container { flex-direction: column; overflow: auto; }
-            .product-section { overflow: visible; }
-            .cart-section { border-top: 5px solid #eee; }
+        .step-box {
+            background: #fff1f2; border-left: 6px solid var(--accent);
+            padding: 20px; margin-top: 20px; border-radius: 10px;
         }
+
+        .selector-box {
+            display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-mini {
+            padding: 8px 15px; border-radius: 15px; border: 2px solid var(--pink-bold);
+            background: white; cursor: pointer; font-size: 0.8rem; font-weight: bold;
+        }
+
+        .btn-mini.active { background: var(--pink-bold); color: white; }
+
+        /* STYLE SOAL CERITA */
+        .kap-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; margin: 20px 0;
+        }
+
+        .kap-card { background: #fdf2f7; border: 2px solid var(--pink-soft); padding: 15px; border-radius: 15px; }
+        .kap-tag { font-weight: bold; color: var(--pink-bold); font-size: 0.8rem; display: block; }
+
+        /* STYLE GAME */
+        #game-stage {
+            position: relative; height: 500px; background: rgba(255,255,255,0.2);
+            border-radius: 30px; overflow: hidden; border: 4px dashed var(--white);
+        }
+
+        @keyframes fallDown { 0% { top: -120px; } 100% { top: 110%; } }
+        .cake-falling { position: absolute; cursor: pointer; text-align: center; animation: fallDown linear infinite; }
+        .cake-img { font-size: 3.5rem; display: block; }
+        .cake-num { background: var(--white); padding: 2px 8px; border-radius: 10px; font-weight: bold; color: #d4418e; border: 2px solid var(--pink-bold); }
+
+        .btn-magic {
+            background: var(--pink-bold); color: white; border: none;
+            padding: 15px 35px; border-radius: 50px; cursor: pointer;
+            font-weight: bold; font-size: 1.1rem; transition: 0.3s;
+            box-shadow: 0 5px 0 #e68a9a;
+        }
+        .btn-magic:active { transform: translateY(4px); box-shadow: 0 1px 0 #e68a9a; }
+
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
+<nav class="main-nav">
+    <button class="nav-btn active" id="btn-belajar" onclick="changePage('belajar')">💎 Belajar</button>
+    <button class="nav-btn" id="btn-latihan" onclick="changePage('latihan')">📝 Cerita Peri</button>
+    <button class="nav-btn" id="btn-game" onclick="changePage('game')">🧁 Main Game</button>
+</nav>
+
+<div class="container">
+
+    <div id="page-belajar">
+        <div class="card">
+            <h2 style="color: var(--pink-bold); text-align: center;">💎 Laboratorium Angka Peri</h2>
+            <div class="selector-box">
+                <button class="btn-mini active" id="tab0" onclick="loadLesson(0)">Level 1 (Mudah)</button>
+                <button class="btn-mini" id="tab1" onclick="loadLesson(1)">Level 2 (Pinjam)</button>
+                <button class="btn-mini" id="tab2" onclick="loadLesson(2)">Level 3 (Super)</button>
+            </div>
+            <div class="math-display">
+                <div class="place-value-labels" id="labels">RT PT T R P S</div>
+                <div id="math-text">1.500<br>- 200<br>-------<br>1.300</div>
+            </div>
+            <div class="step-box">
+                <strong style="color: var(--accent);" id="lesson-title">💡 Misi 1: Tanpa Meminjam</strong>
+                <p id="step-desc">Ayo klik tombol penjelasan di bawah!</p>
+                <button class="btn-magic" style="font-size: 0.9rem;" onclick="showStepByStep()">Lihat Rahasia Langkah ✨</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-latihan" class="hidden">
+        <div class="card">
+            <h2 style="color: var(--purple); text-align: center;">📝 Petualangan Soal Cerita</h2>
+            <p style="text-align: center; font-weight: bold; color: var(--purple);" id="story-lvl-info">Soal 1 dari 3</p>
+            
+            <div style="background: #f0f9ff; padding: 20px; border-radius: 20px; border: 2px dashed var(--purple);">
+                <p id="story-text"></p>
+            </div>
+
+            <div class="kap-grid">
+                <div class="kap-card"><span class="kap-tag">K (KETAHUI)</span><span id="kap-k"></span></div>
+                <div class="kap-card"><span class="kap-tag">A (APA TANYA)</span><span id="kap-a"></span></div>
+                <div class="kap-card" style="border-color: var(--purple);"><span class="kap-tag">P (PENYELESAIAN)</span>Gunakan susun bawah!</div>
+            </div>
+
+            <div style="text-align: center;">
+                <input type="number" id="ansInput" placeholder="Ketik jawaban..." style="padding: 15px; border-radius: 15px; border: 3px solid var(--pink-bold); font-size: 1.4rem; text-align: center; width: 80%;">
+                <br><br>
+                <button class="btn-magic" onclick="checkStoryAns()">Buktikan Hasilnya! 🌸</button>
+            </div>
+
+            <div id="story-board" class="hidden" style="margin-top: 25px;">
+                <div class="math-display" id="story-math-result" style="font-size: 1.8rem;"></div>
+                <p style="text-align: center; color: var(--purple);">"Pintar! Kamu berhasil menyelesaikan soal ini!"</p>
+                <center><button class="btn-mini" onclick="nextStory()">Soal Selanjutnya ➡️</button></center>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-game" class="hidden">
+        <div class="card" style="text-align: center;">
+            <div style="display: flex; justify-content: space-between; font-weight: bold; color: var(--pink-bold);">
+                <span id="hearts">❤️❤️❤️</span>
+                <span id="lvl-info">Misi 1/15</span>
+            </div>
+            <div class="math-display" id="game-math" style="font-size: 1.5rem; background: var(--purple); padding: 15px 30px;"></div>
+            <div id="game-stage"></div>
+        </div>
+    </div>
+
+    <div id="page-win" class="hidden card" style="text-align: center;">
+        <h1 style="font-size: 5rem;">👑🌈</h1>
+        <h2 style="color: var(--pink-bold);">RATU MATEMATIKA!</h2>
+        <p>Kamu sudah menyelesaikan semua misi dengan luar biasa!</p>
+        <button class="btn-magic" onclick="location.reload()">Main Lagi ✨</button>
+    </div>
+
+</div>
+
+<script>
+    // --- DATA SOAL CERITA ---
+    const storyData = [
+        {
+            text: "Di istana ada <b>200.000</b> kembang api pink. Sebanyak <b>85.000</b> sudah dinyalakan semalam. Berapa sisa kembang api yang belum menyala?",
+            k: "Awal: 200.000<br>Dinyalakan: 85.000",
+            a: "Sisa kembang api?",
+            ans: 115000,
+            math: "200.000<br>- 85.000<br><hr>115.000"
+        },
+        {
+            text: "Toko Permen Peri punya stok <b>150.500</b> permen pelangi. Hari ini terjual <b>60.200</b> permen. Berapa permen yang masih ada di rak?",
+            k: "Stok: 150.500<br>Terjual: 60.200",
+            a: "Sisa permen di rak?",
+            ans: 90300,
+            math: "150.500<br>- 60.200<br><hr>090.300"
+        },
+        {
+            text: "Di Kebun Ajaib ada <b>300.000</b> bunga mawar. Sebanyak <b>125.500</b> bunga dipetik untuk pesta. Berapa mawar yang masih tumbuh di kebun?",
+            k: "Bunga: 300.000<br>Dipetik: 125.500",
+            a: "Sisa bunga di kebun?",
+            ans: 174500,
+            math: "300.000<br>-125.500<br><hr>174.500"
+        }
+    ];
+
+    let currentStoryIdx = 0;
+
+    function loadStory() {
+        const s = storyData[currentStoryIdx];
+        document.getElementById('story-lvl-info').innerText = `Soal ${currentStoryIdx + 1} dari ${storyData.length}`;
+        document.getElementById('story-text').innerHTML = s.text;
+        document.getElementById('kap-k').innerHTML = s.k;
+        document.getElementById('kap-a').innerHTML = s.a;
+        document.getElementById('story-math-result').innerHTML = s.math;
+        document.getElementById('story-board').classList.add('hidden');
+        document.getElementById('ansInput').value = "";
+    }
+
+    function checkStoryAns() {
+        const input = document.getElementById('ansInput').value;
+        const s = storyData[currentStoryIdx];
+        if(input == s.ans) {
+            alert("✨ KILAUNYA! Jawabanmu Benar! ✨");
+            document.getElementById('story-board').classList.remove('hidden');
+        } else {
+            alert("🌸 Oh no! Coba hitung lagi pelan-pelan ya peri cantik...");
+        }
+    }
+
+    function nextStory() {
+        currentStoryIdx++;
+        if(currentStoryIdx < storyData.length) {
+            loadStory();
+        } else {
+            alert("👑 LUAR BIASA! Semua soal cerita sudah selesai!");
+            currentStoryIdx = 0;
+            changePage('win');
+        }
+    }
+
+    // --- LOGIKA BELAJAR (Level 1,2,3) ---
+    const lessons = [
+        {
+            title: "💡 Misi 1: Tanpa Meminjam",
+            labels: "R P S",
+            math: "1.500<br>- 200<br>-------<br>1.300",
+            steps: ["1. Satuan: 0 - 0 = 0.", "2. Puluhan: 0 - 0 = 0.", "3. Ratusan: 5 - 2 = 3.", "4. Ribuan: 1 - 0 = 1."]
+        },
+        {
+            title: "💡 Misi 2: Belajar Meminjam",
+            labels: "PT T R P S",
+            math: "12.500<br>- 1.800<br>-------<br>10.700",
+            steps: ["1. Ratusan: 5 kurangi 8? Pinjam!", "2. Angka 5 jadi 15.", "3. 15 - 8 = 7.", "4. Ribuan sisa 1 - 1 = 0."]
+        },
+        {
+            title: "💡 Misi 3: Rahasia Banyak Nol",
+            labels: "RT PT T R P S",
+            math: "100.000<br>- 45.000<br>--------<br>055.000",
+            steps: ["1. Nol harus pinjam berantai.", "2. Pinjam dari angka 1 di depan.", "3. Nol yang dilewati jadi 9.", "4. Nol terakhir jadi 10!"]
+        }
+    ];
+
+    let currentLsnIdx = 0; let bStep = 0;
+    function loadLesson(idx) {
+        currentLsnIdx = idx; bStep = 0;
+        const l = lessons[idx];
+        document.getElementById('lesson-title').innerText = l.title;
+        document.getElementById('labels').innerText = l.labels;
+        document.getElementById('math-text').innerHTML = l.math;
+        document.getElementById('step-desc').innerText = "Ayo klik tombol penjelasan!";
+        document.querySelectorAll('.btn-mini').forEach((b, i) => b.classList.toggle('active', i === idx));
+    }
+    function showStepByStep() {
+        const l = lessons[currentLsnIdx];
+        document.getElementById('step-desc').innerText = l.steps[bStep];
+        bStep = (bStep + 1) % l.steps.length;
+    }
+
+    // --- NAVIGASI & GAME ---
+    function changePage(page) {
+        ['belajar', 'latihan', 'game', 'win'].forEach(p => document.getElementById('page-' + p)?.classList.add('hidden'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('page-' + page).classList.remove('hidden');
+        if(page !== 'win') document.getElementById('btn-' + page).classList.add('active');
+        if(page === 'latihan') loadStory();
+        if(page === 'game') startHujanKue(); else stopHujanKue();
+    }
+
+    let nyawa = 3; let gIdx = 0;
+    
+    // --- DATA GAME: 15 SOAL BERTINGKAT ---
+    const gData = [
+        { q: "1.500 - 300", a: 1200, opt: [1200, 1100, 1300] },
+        { q: "2.800 - 600", a: 2200, opt: [2200, 2100, 2300] },
+        { q: "4.750 - 1.250", a: 3500, opt: [3500, 3450, 3550] },
+        { q: "3.200 - 1.500", a: 1700, opt: [1700, 1800, 1600] },
+        { q: "8.100 - 2.400", a: 5700, opt: [5700, 6700, 5600] },
+        { q: "15.500 - 4.200", a: 11300, opt: [11300, 11200, 10300] },
+        { q: "24.800 - 12.500", a: 12300, opt: [12300, 12200, 13300] },
+        { q: "52.000 - 18.000", a: 34000, opt: [34000, 44000, 36000] },
+        { q: "75.600 - 28.300", a: 47300, opt: [47300, 57300, 46300] },
+        { q: "150.000 - 40.000", a: 110000, opt: [110000, 120000, 100000] },
+        { q: "250.700 - 120.400", a: 130300, opt: [130300, 130400, 120300] },
+        { q: "300.000 - 145.000", a: 155000, opt: [155000, 165000, 145000] },
+        { q: "600.000 - 275.000", a: 325000, opt: [325000, 425000, 335000] },
+        { q: "800.000 - 456.000", a: 344000, opt: [344000, 444000, 354000] },
+        { q: "1.000.000 - 650.000", a: 350000, opt: [350000, 450000, 250000] }
+    ];
+
+    function startHujanKue() { 
+        nyawa = 3; 
+        gIdx = 0; 
+        document.getElementById('hearts').innerText = "❤️❤️❤️"; 
+        renderGame(); 
+    }
+
+    function renderGame() {
+        const d = gData[gIdx]; 
+        document.getElementById('lvl-info').innerText = `Misi ${gIdx + 1}/15`;
+        document.getElementById('game-math').innerText = d.q;
+        const stage = document.getElementById('game-stage'); 
+        stage.innerHTML = "";
         
-        <div class="product-section">
-            <div class="header">
-                <h2 style="margin:0;">🏪 Etalase</h2>
-                <div style="display:flex; gap:10px;">
-                    <button class="mode-btn btn-aqila active" onclick="switchMode('aqila')">Aqila</button>
-                    <button class="mode-btn btn-madina" onclick="switchMode('madina')">Madina</button>
-                </div>
-            </div>
-            <div id="grid" class="grid-products">
-                </div>
-        </div>
-
-        <div class="cart-section">
-            <div class="cart-header">🛒 Keranjang</div>
-            <div id="cartList" class="cart-items">
-                <p style="color:#999; text-align:center; margin-top:20px;">Belum ada barang.</p>
-            </div>
+        d.opt.forEach((v, i) => {
+            const c = document.createElement('div'); 
+            c.className = 'cake-falling';
+            c.style.left = (15 + (i * 30)) + "%"; 
+            c.style.animationDuration = (4 + Math.random() * 2) + "s";
+            c.innerHTML = `<span class="cake-img">🧁</span><span class="cake-num">${v.toLocaleString('id-ID')}</span>`;
             
-            <div class="cart-footer">
-                <div style="display:flex; justify-content:space-between;">
-                    <span>Total Belanja:</span>
-                    <span id="totalDisplay" class="total-display">Rp 0</span>
-                </div>
-                <button id="btnPay" class="btn-checkout" onclick="openCashier()" disabled>BAYAR SEKARANG</button>
-                <button onclick="clearCart()" style="background:none; border:none; color:red; width:100%; margin-top:10px; cursor:pointer;">Kosongkan Keranjang</button>
-            </div>
-        </div>
+            c.onclick = () => { 
+                if(v === d.a) { 
+                    gIdx++; 
+                    if(gIdx < gData.length) {
+                        alert("✨ KILAUNYA! Jawaban Benar! ✨");
+                        renderGame(); 
+                    } else { 
+                        changePage('win'); 
+                    } 
+                } else { 
+                    nyawa--; 
+                    let hString = "";
+                    for(let x=0; x<3; x++) hString += (x < nyawa ? "❤️" : "🖤");
+                    document.getElementById('hearts').innerText = hString;
+                    
+                    alert("🌸 Ups! Coba hitung lagi pelan-pelan ya...");
+                    if(nyawa <= 0) {
+                        alert("Yah, nyawa habis. Ayo coba lagi!");
+                        location.reload();
+                    }
+                } 
+            };
+            stage.appendChild(c);
+        });
+    }
 
-    </div>
+    function stopHujanKue() { document.getElementById('game-stage').innerHTML = ""; }
 
-    <div id="modal" class="modal-overlay">
-        <div class="receipt-box">
-            <h3>KASIR SULTAN</h3>
-            <hr style="border:1px dashed #ccc;">
-            
-            <div class="bill-row">
-                <span>Total Belanja:</span>
-                <span id="billTotal" style="font-weight:bold;">Rp 0</span>
-            </div>
-            <div class="bill-row" style="color:var(--primary);">
-                <span>Uang Pembeli:</span>
-                <span id="billPay">Rp 0</span>
-            </div>
+    // Init awal
+    loadLesson(0);
+</script>
 
-            <p style="margin-top:20px; font-family:sans-serif; color:#555;">Berapa <b>KEMBALIANNYA</b>?</p>
-            <input type="number" id="inputChange" class="pay-input" placeholder="...">
-            
-            <div id="feedback" style="font-weight:bold; height:25px; margin-bottom:10px;"></div>
-
-            <button class="btn-checkout" onclick="verifyPayment()">SELESAI</button>
-            <button onclick="closeModal()" style="margin-top:10px; background:#ddd; border:none; padding:10px; width:100%; border-radius:5px; cursor:pointer;">Batal</button>
-        </div>
-    </div>
-
-    <script>
-        // --- DATABASE BARANG ---
-        const products = {
-            aqila: [
-                { id: 1, name: "Permen", price: 500, icon: "🍬" },
-                { id: 2, name: "Kerupuk", price: 1000, icon: "🍘" },
-                { id: 3, name: "Es Teh", price: 2000, icon: "🥤" },
-                { id: 4, name: "Roti", price: 3500, icon: "🍞" },
-                { id: 5, name: "Susu", price: 4000, icon: "🥛" },
-                { id: 6, name: "Coklat", price: 5500, icon: "🍫" },
-                { id: 7, name: "Es Krim", price: 2500, icon: "🍦" },
-                { id: 8, name: "Donat", price: 1500, icon: "🍩" },
-                { id: 9, name: "Pensil", price: 1200, icon: "✏️" },
-                { id: 10, name: "Buku", price: 3000, icon: "📒" }
-            ],
-            madina: [
-                { id: 101, name: "Boneka", price: 35000, icon: "🧸" },
-                { id: 102, name: "Robot", price: 55500, icon: "🤖" },
-                { id: 103, name: "Tas", price: 75000, icon: "🎒" },
-                { id: 104, name: "Topi", price: 22500, icon: "🧢" },
-                { id: 105, name: "Baju", price: 45000, icon: "👕" },
-                { id: 106, name: "Sepatu", price: 85000, icon: "👟" },
-                { id: 107, name: "Lego", price: 90000, icon: "🧱" },
-                { id: 108, name: "Jam", price: 120000, icon: "⌚" },
-                { id: 109, name: "Kacamata", price: 15500, icon: "👓" },
-                { id: 110, name: "Headset", price: 65000, icon: "🎧" }
-            ]
-        };
-
-        // --- STATE ---
-        let currentMode = 'aqila';
-        let cart = {}; // Object { id: quantity }
-
-        // --- INITIALIZE ---
-        function switchMode(mode) {
-            currentMode = mode;
-            cart = {}; // Reset cart
-            renderProducts();
-            renderCart();
-            
-            // UI Toggle
-            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-            document.querySelector(`.btn-${mode}`).classList.add('active');
-        }
-
-        function formatRupiah(num) {
-            return "Rp " + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-
-        // --- RENDER PRODUCTS ---
-        function renderProducts() {
-            const grid = document.getElementById('grid');
-            grid.innerHTML = "";
-            
-            products[currentMode].forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'card';
-                div.onclick = () => addToCart(item.id);
-                
-                // Cek apakah ada di cart utk update badge
-                const qty = cart[item.id] || 0;
-                const badgeDisplay = qty > 0 ? 'flex' : 'none';
-
-                div.innerHTML = `
-                    <div class="badge-qty" id="badge-${item.id}" style="display:${badgeDisplay}">${qty}</div>
-                    <span class="card-emoji">${item.icon}</span>
-                    <div class="card-title">${item.name}</div>
-                    <div class="card-price">${formatRupiah(item.price)}</div>
-                `;
-                grid.appendChild(div);
-            });
-        }
-
-        // --- CART LOGIC ---
-        function addToCart(id) {
-            if (!cart[id]) cart[id] = 0;
-            cart[id]++;
-            updateBadge(id);
-            renderCart();
-        }
-
-        function removeFromCart(id) {
-            if (cart[id]) {
-                cart[id]--;
-                if (cart[id] <= 0) delete cart[id];
-                updateBadge(id);
-                renderCart();
-            }
-        }
-
-        function updateBadge(id) {
-            const badge = document.getElementById(`badge-${id}`);
-            if(badge) {
-                const qty = cart[id] || 0;
-                badge.innerText = qty;
-                badge.style.display = qty > 0 ? 'flex' : 'none';
-            }
-        }
-
-        function clearCart() {
-            cart = {};
-            renderProducts(); // Reset badges
-            renderCart();
-        }
-
-        function calculateTotal() {
-            let total = 0;
-            for (const [id, qty] of Object.entries(cart)) {
-                const item = products[currentMode].find(p => p.id == id);
-                if (item) total += item.price * qty;
-            }
-            return total;
-        }
-
-        function renderCart() {
-            const container = document.getElementById('cartList');
-            container.innerHTML = "";
-            let total = 0;
-            let itemCount = 0;
-
-            for (const [id, qty] of Object.entries(cart)) {
-                const item = products[currentMode].find(p => p.id == id);
-                if (item) {
-                    const subtotal = item.price * qty;
-                    total += subtotal;
-                    itemCount++;
-
-                    const row = document.createElement('div');
-                    row.className = 'cart-row';
-                    row.innerHTML = `
-                        <div>
-                            <div class="cart-item-name">${item.name}</div>
-                            <small>${qty} x ${formatRupiah(item.price)}</small>
-                        </div>
-                        <div class="cart-control">
-                            <button class="btn-mini" onclick="removeFromCart(${id})">-</button>
-                            <span>${qty}</span>
-                            <button class="btn-mini" onclick="addToCart(${id})">+</button>
-                        </div>
-                    `;
-                    container.appendChild(row);
-                }
-            }
-
-            if (itemCount === 0) {
-                container.innerHTML = '<p style="color:#999; text-align:center; margin-top:20px;">Keranjang kosong.</p>';
-                document.getElementById('btnPay').disabled = true;
-            } else {
-                document.getElementById('btnPay').disabled = false;
-            }
-
-            document.getElementById('totalDisplay').innerText = formatRupiah(total);
-        }
-
-        // --- CASHIER LOGIC ---
-        let currentTotal = 0;
-        let currentPay = 0;
-
-        function getSmartPayment(total) {
-            // Logika menentukan uang yang dikasih pembeli (Next Round Number)
-            const bills = [2000, 5000, 10000, 20000, 50000, 100000, 150000, 200000, 300000, 500000];
-            for (let bill of bills) {
-                if (bill >= total) return bill;
-            }
-            return total; // Pas
-        }
-
-        function openCashier() {
-            currentTotal = calculateTotal();
-            currentPay = getSmartPayment(currentTotal);
-
-            document.getElementById('billTotal').innerText = formatRupiah(currentTotal);
-            document.getElementById('billPay').innerText = formatRupiah(currentPay);
-            document.getElementById('inputChange').value = "";
-            document.getElementById('feedback').innerText = "";
-            
-            document.getElementById('modal').style.display = 'flex';
-            document.getElementById('inputChange').focus();
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        function verifyPayment() {
-            const userChange = parseInt(document.getElementById('inputChange').value);
-            const correctChange = currentPay - currentTotal;
-            const feedback = document.getElementById('feedback');
-
-            if (isNaN(userChange)) {
-                feedback.innerText = "Isi angkanya dulu ya!";
-                feedback.style.color = "orange";
-                return;
-            }
-
-            if (userChange === correctChange) {
-                feedback.innerText = "✅ Benar! Transaksi Sukses.";
-                feedback.style.color = "green";
-                setTimeout(() => {
-                    closeModal();
-                    clearCart();
-                    alert("Terima kasih sudah belanja!");
-                }, 1000);
-            } else {
-                feedback.innerText = `❌ Salah. Harusnya ${formatRupiah(correctChange)}`;
-                feedback.style.color = "red";
-            }
-        }
-
-        // Init Load
-        switchMode('aqila');
-
-    </script>
 </body>
 </html>
