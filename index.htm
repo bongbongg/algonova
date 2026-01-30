@@ -3,496 +3,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulasi OSN-K Matematika SMA 2026</title>
+    <title>Paket B: Simulasi Lengkap OSN-K 2026</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --bg: #f5f6fa;
+            --header-color: #8e44ad; /* Ungu untuk Paket B */
+            --btn-color: #2c3e50;
+            --bg-color: #f3e5f5;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
             color: #333;
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            line-height: 1.6;
         }
         header {
-            background-color: var(--primary);
+            background-color: var(--header-color);
             color: white;
             padding: 30px;
             border-radius: 10px;
             text-align: center;
             margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        h1 { margin: 0; font-size: 2.2em; }
-        .subtitle { font-size: 1.1em; opacity: 0.9; margin-top: 10px; }
-        
-        .section-title {
-            background-color: var(--secondary);
+        .section-header {
+            background-color: #5e35b1;
             color: white;
             padding: 15px;
-            border-radius: 5px;
             margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.2em;
+            border-radius: 5px;
             font-weight: bold;
+            font-size: 1.2em;
         }
-
         .question-card {
             background: white;
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--secondary);
-            transition: transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--header-color);
         }
-        .question-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .q-number {
-            font-weight: bold;
-            color: var(--secondary);
-            margin-bottom: 10px;
-            display: block;
-        }
-        .options {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 15px;
-        }
-        .options li {
-            padding: 5px 0;
-        }
+        .options { list-style-type: none; padding: 0; }
+        .options li { padding: 5px 0; }
         
-        .btn-solution {
-            background-color: var(--primary);
+        .btn-toggle {
+            background-color: var(--btn-color);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 15px;
             border-radius: 4px;
             cursor: pointer;
             margin-top: 15px;
-            font-size: 0.9em;
         }
-        .btn-solution:hover { background-color: #34495e; }
-
-        .solution-box {
+        .btn-toggle:hover { background-color: #455a64; }
+        
+        .solution {
             display: none;
             margin-top: 15px;
             padding: 15px;
-            background-color: #e8f6f3;
-            border: 1px solid #a3e4d7;
+            background-color: #e8eaf6;
             border-radius: 5px;
-            color: #0e6251;
-        }
-        .solution-box strong { color: var(--accent); }
-
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: #7f8c8d;
-            font-size: 0.9em;
+            border: 1px dashed #3f51b5;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Latihan OSN-K Matematika SMA 2026</h1>
-    <div class="subtitle">Waktu Pengerjaan: 150 Menit | Total 20 Soal</div>
+    <h1>Paket B: Simulasi OSN-K 2026</h1>
+    <p>Format Lengkap: 10 Pilihan Ganda & 10 Isian Singkat</p>
 </header>
 
-<div class="section-title">BAGIAN A: SOAL DASAR (Pilihan Ganda)</div>
+<div class="section-header">BAGIAN A: PILIHAN GANDA (SOAL DASAR)</div>
 
 <div class="question-card">
-    <span class="q-number">Soal 1 (Aljabar)</span>
-    <p>Jika \( P(x) \) dibagi oleh \( (x^2 - 1) \) bersisa \( (2x + 3) \) dan jika dibagi oleh \( (x^2 - 4) \) bersisa \( (x + 5) \). Maka sisa pembagian \( P(x) \) oleh \( (x^2 + 3x + 2) \) adalah...</p>
+    <strong>Soal 1 (Aljabar)</strong><br>
+    Jika \( a + b = 5 \) dan \( ab = 3 \), maka nilai dari \( a^3 + b^3 \) adalah...
     <ul class="options">
-        <li>A. \( 4x + 5 \)</li>
-        <li>B. \( -3x + 2 \)</li>
-        <li>C. \( 2x + 3 \)</li>
-        <li>D. \( -x + 4 \)</li>
-        <li>E. \( x - 1 \)</li>
+        <li>A. 65</li>
+        <li>B. 80</li>
+        <li>C. 95</li>
+        <li>D. 110</li>
+        <li>E. 125</li>
     </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol1')">Lihat Kunci</button>
-    <div id="sol1" class="solution-box">
-        <strong>Jawaban: A. \( 4x + 5 \)</strong><br><br>
-        Faktor pembagi:<br>
-        \( x^2-1 \to x=\pm 1 \). \( P(1)=5, P(-1)=1 \).<br>
-        \( x^2-4 \to x=\pm 2 \). \( P(2)=7, P(-2)=3 \).<br>
-        Pembagi baru \( x^2+3x+2 = (x+1)(x+2) \). Sisa \( S(x) = ax+b \).<br>
-        \( P(-1) = -a+b = 1 \)<br>
-        \( P(-2) = -2a+b = 3 \)<br>
-        Eliminasi: \( a = -2 \to b = -1 \).<br>
-        (Maaf, opsi di atas sepertinya typo di soal awal, jawaban matematisnya \( -2x-1 \). Jika mengikuti pola soal serupa di OSN, sesuaikan logika substitusi).
+    <button class="btn-toggle" onclick="toggle('sa1')">Lihat Kunci</button>
+    <div id="sa1" class="solution">
+        <strong>Jawaban: B. 80</strong><br>
+        Rumus: \( a^3 + b^3 = (a+b)^3 - 3ab(a+b) \)<br>
+        \( = (5)^3 - 3(3)(5) = 125 - 45 = 80 \).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 2 (Teori Bilangan)</span>
-    <p>Banyaknya bilangan bulat positif \( n \le 100 \) sedemikian sehingga \( n^3 + 2026 \) habis dibagi oleh \( n + 2 \) adalah...</p>
+    <strong>Soal 2 (Teori Bilangan)</strong><br>
+    Banyaknya faktor positif dari bilangan \( 2026 \) adalah...
     <ul class="options">
         <li>A. 2</li>
-        <li>B. 4</li>
-        <li>C. 6</li>
-        <li>D. 8</li>
-        <li>E. 10</li>
+        <li>B. 3</li>
+        <li>C. 4</li>
+        <li>D. 6</li>
+        <li>E. 8</li>
     </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol2')">Lihat Kunci</button>
-    <div id="sol2" class="solution-box">
-        <strong>Jawaban: B. 4</strong><br><br>
-        \( n^3 + 2026 = (n^3 + 8) + 2018 = (n+2)(n^2-2n+4) + 2018 \).<br>
-        Agar habis dibagi \( n+2 \), maka \( n+2 \) harus membagi 2018.<br>
-        \( 2018 = 2 \times 1009 \) (1009 prima). Faktor: 1, 2, 1009, 2018.<br>
-        \( n+2 \) bisa bernilai 1, 2, 1009, 2018.<br>
-        Namun \( n \) positif (\( n \ge 1 \)), maka \( n+2 \ge 3 \).<br>
-        Jadi \( n+2 = 1009 \implies n=1007 \) (Tidak memenuhi \( n \le 100 \)).<br>
-        Tunggu, apakah ada kesalahan? Oh, 2026. <br>
-        \( 2026 \pmod{n+2} \). \( n^3 \equiv (-8) \pmod{n+2} \).<br>
-        \( -8 + 2026 = 2018 \).<br>
-        Faktor 2018: 1, 2, 1009, 2018. Karena \( n \le 100 \), tidak ada \( n \) yang memenuhi selain jika soalnya dimodifikasi atau saya salah hitung faktor.<br>
-        <em>Koreksi Logika:</em> Jika soal dirancang agar ada jawaban, kemungkinan angkanya berbeda. Namun langkahnya: Cari faktor \( K \) dimana \( K = P(-2) \).
+    <button class="btn-toggle" onclick="toggle('sa2')">Lihat Kunci</button>
+    <div id="sa2" class="solution">
+        <strong>Jawaban: C. 4</strong><br>
+        Faktorisasi prima 2026: \( 2^1 \times 1013^1 \).<br>
+        Banyak faktor = \( (1+1)(1+1) = 4 \).<br>
+        (Faktornya: 1, 2, 1013, 2026).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 3 (Geometri)</span>
-    <p>Diketahui segiempat tali busur \( ABCD \) dengan \( AB = 3, BC = 4, CD = 5 \). Jika \( \angle B = 90^\circ \), maka panjang \( AD \) adalah...</p>
+    <strong>Soal 3 (Geometri)</strong><br>
+    Panjang sisi-sisi sebuah segitiga adalah 7, 24, dan 25. Luas lingkaran dalam segitiga tersebut adalah...
     <ul class="options">
-        <li>A. \( 5\sqrt{2} \)</li>
-        <li>B. \( \sqrt{34} \)</li>
-        <li>C. 6</li>
-        <li>D. \( \sqrt{11} \)</li>
-        <li>E. \( \sqrt{7} \)</li>
+        <li>A. \( 4\pi \)</li>
+        <li>B. \( 9\pi \)</li>
+        <li>C. \( 16\pi \)</li>
+        <li>D. \( 25\pi \)</li>
+        <li>E. \( 36\pi \)</li>
     </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol3')">Lihat Kunci</button>
-    <div id="sol3" class="solution-box">
-        <strong>Jawaban: Opsional (Tergantung hitungan)</strong><br><br>
-        Karena \( \angle B = 90^\circ \), maka \( AC \) adalah diameter.<br>
-        \( AC = \sqrt{3^2 + 4^2} = 5 \).<br>
-        Karena \( ABCD \) tali busur dan \( AC \) diameter, maka \( \angle D \) juga \( 90^\circ \) (sudut keliling menghadap diameter).<br>
-        Perhatikan \( \triangle ADC \): \( AD^2 + CD^2 = AC^2 \).<br>
-        \( AD^2 + 5^2 = 5^2 \implies AD = 0 \). (Tidak mungkin membentuk segiempat).<br>
-        <em>Revisi Soal yang umum:</em> Misal \( CD=1 \), maka \( AD = \sqrt{25-1} = \sqrt{24} \).<br>
-        Untuk soal latihan ini, anggap ini pengecekan konsep: \( AC \) diameter.
+    <button class="btn-toggle" onclick="toggle('sa3')">Lihat Kunci</button>
+    <div id="sa3" class="solution">
+        <strong>Jawaban: B. \( 9\pi \)</strong><br>
+        Segitiga ini siku-siku (Tripel Pythagoras).<br>
+        Jari-jari dalam \( r = \frac{a+b-c}{2} = \frac{7+24-25}{2} = \frac{6}{2} = 3 \).<br>
+        Luas = \( \pi r^2 = \pi (3^2) = 9\pi \).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 4 (Kombinatorika)</span>
-    <p>Sebuah dadu setimbang dilempar dua kali. Peluang jumlah mata dadu yang muncul merupakan bilangan prima adalah...</p>
+    <strong>Soal 4 (Kombinatorika)</strong><br>
+    Dari 5 siswa putra dan 4 siswa putri akan dipilih 3 orang perwakilan. Peluang terpilihnya 2 putra dan 1 putri adalah...
     <ul class="options">
-        <li>A. 13/36</li>
-        <li>B. 14/36</li>
-        <li>C. 15/36</li>
-        <li>D. 16/36</li>
-        <li>E. 17/36</li>
+        <li>A. 5/14</li>
+        <li>B. 10/21</li>
+        <li>C. 1/2</li>
+        <li>D. 5/7</li>
+        <li>E. 3/8</li>
     </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol4')">Lihat Kunci</button>
-    <div id="sol4" class="solution-box">
-        <strong>Jawaban: C. 15/36</strong><br><br>
-        Jumlah mata dadu (2 s.d 12). Prima: 2, 3, 5, 7, 11.<br>
-        - Jumlah 2: (1,1) -> 1<br>
-        - Jumlah 3: (1,2), (2,1) -> 2<br>
-        - Jumlah 5: (1,4), (4,1), (2,3), (3,2) -> 4<br>
-        - Jumlah 7: (1,6)...(6,1) -> 6<br>
-        - Jumlah 11: (5,6), (6,5) -> 2<br>
-        Total = 1 + 2 + 4 + 6 + 2 = 15.<br>
-        Peluang = 15/36.
+    <button class="btn-toggle" onclick="toggle('sa4')">Lihat Kunci</button>
+    <div id="sa4" class="solution">
+        <strong>Jawaban: B. 10/21</strong><br>
+        Total cara \( C(9,3) = 84 \).<br>
+        Cara pilih 2 Pa & 1 Pi: \( C(5,2) \times C(4,1) = 10 \times 4 = 40 \).<br>
+        Peluang = \( 40/84 = 10/21 \).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 5 (Aljabar - Ketaksamaan)</span>
-    <p>Jika \( a, b, c \) bilangan real positif dengan \( abc = 1 \), nilai minimum dari \( (1+a)(1+b)(1+c) \) adalah...</p>
+    <strong>Soal 5 (Aljabar)</strong><br>
+    Jika \( f(x) = 2x + 1 \) dan \( (g \circ f)(x) = 4x^2 + 4x + 5 \), maka \( g(3) \) adalah...
+    <ul class="options">
+        <li>A. 5</li>
+        <li>B. 7</li>
+        <li>C. 9</li>
+        <li>D. 12</li>
+        <li>E. 13</li>
+    </ul>
+    <button class="btn-toggle" onclick="toggle('sa5')">Lihat Kunci</button>
+    <div id="sa5" class="solution">
+        <strong>Jawaban: E. 13</strong><br>
+        Misal \( f(x) = 3 \implies 2x+1=3 \implies x=1 \).<br>
+        Maka \( g(3) = (g \circ f)(1) = 4(1)^2 + 4(1) + 5 = 13 \).
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 6 (Teori Bilangan)</strong><br>
+    Digit satuan dari \( 3^{2026} \) adalah...
     <ul class="options">
         <li>A. 1</li>
-        <li>B. 4</li>
-        <li>C. 6</li>
-        <li>D. 8</li>
-        <li>E. 9</li>
+        <li>B. 3</li>
+        <li>C. 7</li>
+        <li>D. 9</li>
+        <li>E. 5</li>
     </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol5')">Lihat Kunci</button>
-    <div id="sol5" class="solution-box">
-        <strong>Jawaban: D. 8</strong><br><br>
-        Gunakan AM-GM: \( 1+a \ge 2\sqrt{a} \), \( 1+b \ge 2\sqrt{b} \), dst.<br>
-        \( (1+a)(1+b)(1+c) \ge 8\sqrt{abc} \)<br>
-        Karena \( abc=1 \), maka minimumnya 8.
+    <button class="btn-toggle" onclick="toggle('sa6')">Lihat Kunci</button>
+    <div id="sa6" class="solution">
+        <strong>Jawaban: D. 9</strong><br>
+        Pola pangkat 3: 3, 9, 7, 1 (Siklus 4).<br>
+        \( 2026 \div 4 \) bersisa 2.<br>
+        Maka sama dengan \( 3^2 = 9 \).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 6 (Teori Bilangan)</span>
-    <p>Diketahui \( KPK(n, 2026) = 10130 \). Banyaknya nilai \( n \) yang mungkin adalah...</p>
+    <strong>Soal 7 (Geometri)</strong><br>
+    Persegi panjang ABCD memiliki luas 48. Jika panjang diagonalnya 10, maka keliling persegi panjang tersebut adalah...
     <ul class="options">
-        <li>A. 4</li>
-        <li>B. 6</li>
-        <li>C. 8</li>
-        <li>D. 12</li>
-        <li>E. 16</li>
+        <li>A. 20</li>
+        <li>B. 24</li>
+        <li>C. 28</li>
+        <li>D. 32</li>
+        <li>E. 36</li>
     </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol6')">Lihat Kunci</button>
-    <div id="sol6" class="solution-box">
-        <strong>Jawaban: A. 4</strong><br><br>
+    <button class="btn-toggle" onclick="toggle('sa7')">Lihat Kunci</button>
+    <div id="sa7" class="solution">
+        <strong>Jawaban: C. 28</strong><br>
+        \( xy = 48 \), \( x^2+y^2 = 100 \).<br>
+        \( (x+y)^2 = x^2+y^2 + 2xy = 100 + 96 = 196 \).<br>
+        \( x+y = 14 \). Keliling = \( 2(x+y) = 28 \).
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 8 (Kombinatorika)</strong><br>
+    Banyaknya susunan huruf berbeda yang dapat dibentuk dari kata "OSNK26" adalah...
+    <ul class="options">
+        <li>A. 120</li>
+        <li>B. 360</li>
+        <li>C. 720</li>
+        <li>D. 1440</li>
+        <li>E. 5040</li>
+    </ul>
+    <button class="btn-toggle" onclick="toggle('sa8')">Lihat Kunci</button>
+    <div id="sa8" class="solution">
+        <strong>Jawaban: C. 720</strong><br>
+        Kata "OSNK26" terdiri dari 6 karakter berbeda.<br>
+        Permutasi \( 6! = 720 \).
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 9 (Aljabar)</strong><br>
+    Himpunan penyelesaian dari pertidaksamaan \( \frac{x-1}{x+2} \le 0 \) adalah...
+    <ul class="options">
+        <li>A. \( x \le 1 \)</li>
+        <li>B. \( -2 < x \le 1 \)</li>
+        <li>C. \( x < -2 \) atau \( x \ge 1 \)</li>
+        <li>D. \( -2 \le x \le 1 \)</li>
+        <li>E. \( x > 1 \)</li>
+    </ul>
+    <button class="btn-toggle" onclick="toggle('sa9')">Lihat Kunci</button>
+    <div id="sa9" class="solution">
+        <strong>Jawaban: B. \( -2 < x \le 1 \)</strong><br>
+        Pembuat nol: \( x=1 \) dan \( x=-2 \).<br>
+        Uji garis bilangan (+, -, +). Daerah negatif ada di tengah.<br>
+        Penyebut tidak boleh 0 (\( x \neq -2 \)).
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 10 (Logika)</strong><br>
+    Jika hari ini Rabu, maka 2026 hari lagi adalah hari...
+    <ul class="options">
+        <li>A. Senin</li>
+        <li>B. Selasa</li>
+        <li>C. Rabu</li>
+        <li>D. Kamis</li>
+        <li>E. Jumat</li>
+    </ul>
+    <button class="btn-toggle" onclick="toggle('sa10')">Lihat Kunci</button>
+    <div id="sa10" class="solution">
+        <strong>Jawaban: E. Jumat</strong><br>
+        \( 2026 \pmod 7 \).<br>
+        \( 2026 = 7 \times 289 + 3 \). Sisa 3.<br>
+        Rabu + 3 hari = Jumat.
+    </div>
+</div>
+
+<div class="section-header">BAGIAN B: SOAL LANJUT (ISIAN SINGKAT)</div>
+
+<div class="question-card">
+    <strong>Soal 11 (Aljabar - Deret Teleskopik)</strong><br>
+    Tentukan nilai dari penjumlahan berikut:
+    \[ \frac{1}{1 \times 2} + \frac{1}{2 \times 3} + \frac{1}{3 \times 4} + \dots + \frac{1}{2025 \times 2026} \]
+    (Tuliskan dalam bentuk pecahan paling sederhana m/n, lalu jawab nilai \( m+n \)).
+    <button class="btn-toggle" onclick="toggle('sb1')">Lihat Kunci</button>
+    <div id="sb1" class="solution">
+        <strong>Jawaban: 4051</strong><br>
+        Bentuk \( \sum \frac{1}{n(n+1)} = 1 - \frac{1}{2026} = \frac{2025}{2026} \).<br>
+        \( m=2025, n=2026 \).<br>
+        \( m+n = 4051 \).
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 12 (Teori Bilangan - FPB)</strong><br>
+    Tentukan FPB dari \( 2^{2026} - 1 \) dan \( 2^{1013} - 1 \).
+    <button class="btn-toggle" onclick="toggle('sb2')">Lihat Kunci</button>
+    <div id="sb2" class="solution">
+        <strong>Jawaban: \( 2^{1013}-1 \)</strong><br>
+        Rumus: \( FPB(a^m-1, a^n-1) = a^{FPB(m,n)} - 1 \).<br>
+        \( FPB(2026, 1013) = 1013 \).<br>
+        Jawaban dalam bentuk angka sangat besar, cukup tulis bentuk pangkatnya jika soal esai, tapi jika diminta digit terakhir: \( 2^1-1=1 \). Biasanya soal ini meminta bentuk pangkat.
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 13 (Geometri - Trapesium)</strong><br>
+    Trapesium ABCD dengan AB sejajar CD. Panjang AB = 20, CD = 30, dan tinggi trapesium 12. Titik E dan F adalah titik tengah diagonal AC dan BD. Tentukan panjang EF.
+    <button class="btn-toggle" onclick="toggle('sb3')">Lihat Kunci</button>
+    <div id="sb3" class="solution">
+        <strong>Jawaban: 5</strong><br>
+        Rumus jarak titik tengah diagonal trapesium:<br>
+        \( EF = \frac{1}{2} |CD - AB| \)<br>
+        \( EF = \frac{1}{2} |30 - 20| = 5 \).
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 14 (Kombinatorika - Jalur)</strong><br>
+    Berapa banyak cara berjalan dari titik (0,0) ke titik (4,2) pada bidang kartesius jika kita hanya boleh melangkah ke Kanan (x+1) atau ke Atas (y+1)?
+    <button class="btn-toggle" onclick="toggle('sb4')">Lihat Kunci</button>
+    <div id="sb4" class="solution">
+        <strong>Jawaban: 15</strong><br>
+        Total langkah = 4 kanan + 2 atas = 6 langkah.<br>
+        Kombinasi \( C(6, 2) \) atau \( C(6, 4) \).<br>
+        \( \frac{6 \times 5}{2} = 15 \).
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 15 (Aljabar - Suku Banyak)</strong><br>
+    Jika \( x = \sqrt[3]{2} + 1 \), tentukan nilai dari \( x^3 - 3x^2 + 3x \).
+    <button class="btn-toggle" onclick="toggle('sb5')">Lihat Kunci</button>
+    <div id="sb5" class="solution">
+        <strong>Jawaban: 3</strong><br>
+        \( x - 1 = \sqrt[3]{2} \)<br>
+        Pangkatkan tiga kedua ruas:<br>
+        \( (x-1)^3 = 2 \)<br>
+        \( x^3 - 3x^2 + 3x - 1 = 2 \)<br>
+        \( x^3 - 3x^2 + 3x = 3 \).
+    </div>
+</div>
+
+<div class="question-card">
+    <strong>Soal 16 (Teori Bilangan - Faktor)</strong><br>
+    Tentukan bilangan bulat positif terkecil \( n \) sehingga \( 2026n \) adalah bilangan kuadrat sempurna.
+    <button class="btn-toggle" onclick="toggle('sb6')">Lihat Kunci</button>
+    <div id="sb6" class="solution">
+        <strong>Jawaban: 2026</strong><br>
         \( 2026 = 2 \times 1013 \).<br>
-        \( 10130 = 2 \times 5 \times 1013 \).<br>
-        \( KPK(n, 2 \cdot 1013) = 2 \cdot 5 \cdot 1013 \).<br>
-        Agar KPK memiliki faktor 5, \( n \) wajib memiliki faktor 5.<br>
-        \( n \) harus berbentuk \( 5 \times (\text{faktor dari } 2 \text{ dan } 1013) \).<br>
-        \( n \in \{5, 10, 5065, 10130\} \).
+        Agar jadi kuadrat, pangkat faktor prima harus genap.<br>
+        Kita butuh satu lagi angka 2 dan satu lagi angka 1013.<br>
+        Maka \( n = 2 \times 1013 = 2026 \).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 7 (Geometri)</span>
-    <p>Dua lingkaran berjari-jari 9 dan 4 bersinggungan luar. Panjang garis singgung persekutuan luar kedua lingkaran tersebut adalah...</p>
-    <ul class="options">
-        <li>A. 10</li>
-        <li>B. 12</li>
-        <li>C. 13</li>
-        <li>D. 14</li>
-        <li>E. 15</li>
-    </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol7')">Lihat Kunci</button>
-    <div id="sol7" class="solution-box">
-        <strong>Jawaban: B. 12</strong><br><br>
-        Rumus Garis Singgung Persekutuan Luar (GSPL):<br>
-        \( d = \sqrt{P^2 - (R-r)^2} \)<br>
-        Jarak pusat \( P = 9+4 = 13 \).<br>
-        Selisih jari-jari \( R-r = 9-4 = 5 \).<br>
-        \( d = \sqrt{13^2 - 5^2} = \sqrt{169-25} = \sqrt{144} = 12 \).
+    <strong>Soal 17 (Geometri - Sudut Jam)</strong><br>
+    Berapakah besar sudut terkecil yang dibentuk oleh jarum jam dan jarum menit pada pukul 03.30?
+    <button class="btn-toggle" onclick="toggle('sb7')">Lihat Kunci</button>
+    <div id="sb7" class="solution">
+        <strong>Jawaban: 75 Derajat</strong><br>
+        Jarum menit di angka 6.<br>
+        Jarum jam di tengah-tengah angka 3 dan 4 (karena lewat 30 menit).<br>
+        Jarak angka: 3 ke 6 adalah 3 strip (90 derajat).<br>
+        Pergeseran jarum jam: \( 30/60 \times 30^\circ = 15^\circ \).<br>
+        Sudut = \( 90^\circ - 15^\circ = 75^\circ \).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 8 (Aljabar - Barisan)</span>
-    <p>Suku ke-3 barisan aritmatika adalah 11 dan suku ke-10 adalah 39. Jumlah 20 suku pertama adalah...</p>
-    <ul class="options">
-        <li>A. 800</li>
-        <li>B. 820</li>
-        <li>C. 840</li>
-        <li>D. 860</li>
-        <li>E. 880</li>
-    </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol8')">Lihat Kunci</button>
-    <div id="sol8" class="solution-box">
-        <strong>Jawaban: B. 820</strong><br><br>
-        \( a+2b = 11 \)<br>
-        \( a+9b = 39 \)<br>
-        Kurangkan: \( 7b = 28 \to b=4 \).<br>
-        \( a + 8 = 11 \to a=3 \).<br>
-        \( S_{20} = \frac{20}{2}(2a + 19b) = 10(6 + 76) = 10(82) = 820 \).
+    <strong>Soal 18 (Aljabar - Persamaan)</strong><br>
+    Tentukan nilai \( x \) yang memenuhi \( \sqrt{x + \sqrt{x + \sqrt{x + \dots}}} = 2026 \).
+    <button class="btn-toggle" onclick="toggle('sb8')">Lihat Kunci</button>
+    <div id="sb8" class="solution">
+        <strong>Jawaban: 4104670 (atau \( 2026^2 - 2026 \))</strong><br>
+        Misal \( y = \sqrt{x+y} = 2026 \).<br>
+        \( 2026 = \sqrt{x + 2026} \)<br>
+        \( 2026^2 = x + 2026 \)<br>
+        \( x = 2026^2 - 2026 \).<br>
+        \( x = 2026(2025) \).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 9 (Kombinatorika)</span>
-    <p>Banyaknya cara menyusun huruf "OLIMPIADE" sedemikian sehingga huruf vokal selalu berdampingan adalah...</p>
-    <ul class="options">
-        <li>A. 4320</li>
-        <li>B. 8640</li>
-        <li>C. 14400</li>
-        <li>D. 17280</li>
-        <li>E. 34560</li>
-    </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol9')">Lihat Kunci</button>
-    <div id="sol9" class="solution-box">
-        <strong>Jawaban: D. 17280</strong><br><br>
-        Huruf: O, L, I, M, P, I, A, D, E (9 huruf).<br>
-        Vokal: O, I, I, A, E (5 huruf). Konsonan: L, M, P, D (4 huruf).<br>
-        Blok vokal dianggap 1 objek. Total objek: 4 Konsonan + 1 Blok Vokal = 5 objek.<br>
-        Permutasi 5 objek: \( 5! = 120 \).<br>
-        Permutasi dalam blok vokal (O,I,I,A,E): \( \frac{5!}{2!} \) (karena ada 2 huruf I) = 60.<br>
-        Total = \( 120 \times 60 \times (\text{tunggu, apakah ada huruf sama lain? Tidak}) = 7200 \).<br>
-        <em>Koreksi:</em> Opsinya besar. Cek lagi. Vokal: O, I, I, A, E. Konsonan: L, M, P, D.<br>
-        Oh, di soal "OLIMPIADE", I ada 2. <br>
-        Susunan objek utama: (Vokal), L, M, P, D -> 5!. Vokal internal: 5!/2!.<br>
-        Total: \( 120 \times 60 = 7200 \).<br>
-        Jika soalnya O, L, I, M, P, I, A, D, E (tanpa syarat): \( 9!/2! \).<br>
-        Dengan opsi jawaban D (17280), mungkin soalnya beda kata atau saya salah hitung faktorial. <br>
-        \( 4! \times 6! / 2 \) ? Tidak.<br>
-        Kita asumsikan jawabannya D berdasarkan perhitungan permutasi siklis atau variasi lain. Namun secara matematis: 7200.
+    <strong>Soal 19 (Kombinatorika - Jabat Tangan)</strong><br>
+    Dalam sebuah pesta, setiap orang berjabat tangan dengan orang lain tepat satu kali. Jika terjadi total 66 jabat tangan, berapa banyak orang yang hadir?
+    <button class="btn-toggle" onclick="toggle('sb9')">Lihat Kunci</button>
+    <div id="sb9" class="solution">
+        <strong>Jawaban: 12</strong><br>
+        \( \frac{n(n-1)}{2} = 66 \)<br>
+        \( n(n-1) = 132 \)<br>
+        \( 12 \times 11 = 132 \).<br>
+        Jadi \( n=12 \).
     </div>
 </div>
 
 <div class="question-card">
-    <span class="q-number">Soal 10 (Aljabar)</span>
-    <p>Jika \( x + \frac{1}{x} = 3 \), maka nilai dari \( x^3 + \frac{1}{x^3} \) adalah...</p>
-    <ul class="options">
-        <li>A. 18</li>
-        <li>B. 21</li>
-        <li>C. 24</li>
-        <li>D. 27</li>
-        <li>E. 30</li>
-    </ul>
-    <button class="btn-solution" onclick="toggleSolution('sol10')">Lihat Kunci</button>
-    <div id="sol10" class="solution-box">
-        <strong>Jawaban: A. 18</strong><br><br>
-        Rumus: \( a^3 + b^3 = (a+b)^3 - 3ab(a+b) \).<br>
-        \( x^3 + \frac{1}{x^3} = (3)^3 - 3(1)(3) \)<br>
-        \( = 27 - 9 = 18 \).
-    </div>
-</div>
-
-<div class="section-title">BAGIAN B: SOAL LANJUT (Isian Singkat)</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 11 (Fungsi)</span>
-    <p>Diketahui fungsi \( f: \mathbb{R} \to \mathbb{R} \) memenuhi \( f(x) + 2f(1-x) = x^2 \). Tentukan nilai dari \( 3f(3) \).</p>
-    <button class="btn-solution" onclick="toggleSolution('sol11')">Lihat Kunci</button>
-    <div id="sol11" class="solution-box">
-        <strong>Jawaban: 13</strong><br><br>
-        Substitusi \( x=3 \): \( f(3) + 2f(-2) = 9 \) ... (1)<br>
-        Substitusi \( x=-2 \): \( f(-2) + 2f(3) = 4 \) ... (2)<br>
-        Dari (2), \( f(-2) = 4 - 2f(3) \). Masukkan ke (1):<br>
-        \( f(3) + 2(4 - 2f(3)) = 9 \)<br>
-        \( f(3) + 8 - 4f(3) = 9 \)<br>
-        \( -3f(3) = 1 \implies 3f(3) = -1 \).<br>
-        <em>Catatan:</em> Cek kembali tanda aljabar. \( -3f(3)=1 \to f(3)=-1/3 \).<br>
-        Maka \( 3f(3) = -1 \). (Jika diminta bilangan bulat positif, mungkin soalnya \( 3f(3)^2 \) atau sejenisnya, tapi secara aljabar hasilnya -1).
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 12 (Modulo)</span>
-    <p>Tentukan sisa pembagian \( 1^{2026} + 2^{2026} + \dots + 2026^{2026} \) oleh 2026.</p>
-    <button class="btn-solution" onclick="toggleSolution('sol12')">Lihat Kunci</button>
-    <div id="sol12" class="solution-box">
-        <strong>Jawaban: 1013 (atau bentuk lain tergantung sifat 2026)</strong><br><br>
-        Karena 2026 genap, pasangan \( k^{2026} + (2026-k)^{2026} \equiv k^{2026} + (-k)^{2026} \equiv 2k^{2026} \pmod{2026} \).<br>
-        Soal ini cukup kompleks karena 2026 bukan prima (\( 2 \times 1013 \)).<br>
-        Biasanya untuk \( p \) ganjil, jumlah pangkat \( p \) habis dibagi \( p \).<br>
-        Untuk level OSN-K, biasanya jawabannya <strong>0</strong> atau <strong>1013</strong> (tengah).
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 13 (Geometri - Kuasa Titik)</span>
-    <p>Titik P di luar lingkaran. Garis PAB dan PCD memotong lingkaran. \( PA=4, AB=5, PC=3 \). Tentukan panjang CD.</p>
-    <button class="btn-solution" onclick="toggleSolution('sol13')">Lihat Kunci</button>
-    <div id="sol13" class="solution-box">
-        <strong>Jawaban: 9</strong><br><br>
-        \( PB = PA + AB = 4 + 5 = 9 \).<br>
-        Power of Point: \( PA \times PB = PC \times PD \).<br>
-        \( 4 \times 9 = 3 \times (3 + CD) \).<br>
-        \( 36 = 3(3 + CD) \implies 12 = 3 + CD \implies CD = 9 \).
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 14 (Binomial)</span>
-    <p>Koefisien \( x^{2026} \) dari \( (1 - x + x^2)^{2026} \). Tentukan digit satuannya.</p>
-    <button class="btn-solution" onclick="toggleSolution('sol14')">Lihat Kunci</button>
-    <div id="sol14" class="solution-box">
-        <strong>Jawaban: (Konseptual)</strong><br><br>
-        Soal ini menuntut ekspansi multinomial. Biasanya untuk koefisien tengah atau tertentu.<br>
-        Jika \( x=1 \), jumlah koefisien = \( 1 \).<br>
-        Untuk soal isian singkat ini, biasanya jawabannya <strong>1</strong> (berdasarkan pola koefisien pusat).
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 15 (Persamaan Diophantine)</span>
-    <p>Banyaknya pasangan bilangan bulat positif \( (x, y) \) yang memenuhi \( \frac{1}{x} + \frac{1}{y} = \frac{1}{2026} \).</p>
-    <button class="btn-solution" onclick="toggleSolution('sol15')">Lihat Kunci</button>
-    <div id="sol15" class="solution-box">
-        <strong>Jawaban: 9</strong><br><br>
-        Ubah ke bentuk: \( (x - 2026)(y - 2026) = 2026^2 \).<br>
-        Cari banyak faktor positif dari \( 2026^2 \).<br>
-        \( 2026 = 2^1 \times 1013^1 \).<br>
-        \( 2026^2 = 2^2 \times 1013^2 \).<br>
-        Banyak faktor = \( (2+1)(2+1) = 3 \times 3 = 9 \).
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 16 (Linear Diophantine)</span>
-    <p>Tentukan nilai terkecil dari \( 3x + 5y \) dimana \( x, y \) bulat positif, \( 3x + 5y > 100 \) dan \( 3x - 5y = 1 \).</p>
-    <button class="btn-solution" onclick="toggleSolution('sol16')">Lihat Kunci</button>
-    <div id="sol16" class="solution-box">
-        <strong>Jawaban: 103</strong><br><br>
-        \( y = (3x-1)/5 \).<br>
-        Substitusi: \( 3x + (3x-1) > 100 \implies 6x > 101 \implies x \ge 17 \).<br>
-        Cek \( x=17 \): \( 3(17)-5y=1 \to 51-1=5y \to y=10 \).<br>
-        Nilai: \( 3(17) + 5(10) = 51 + 50 = 101 \). (Syarat > 100 terpenuhi).<br>
-        Tunggu, \( x \) harus membuat \( y \) bulat. \( 3x \equiv 1 \pmod 5 \). \( x \equiv 2 \pmod 5 \).<br>
-        \( x \) bisa 2, 7, 12, 17, 22...<br>
-        Jika \( x=17 \), \( y=10 \). Nilai = 101.<br>
-        Tapi syarat \( > 100 \), maka 101 diterima.<br>
-        Jadi <strong>101</strong>.
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 17 (Trigonometri)</span>
-    <p>Segitiga ABC, \( AB=6, AC=8 \), Luas \( 12\sqrt{3} \). Besar sudut A (tumpul) adalah...</p>
-    <button class="btn-solution" onclick="toggleSolution('sol17')">Lihat Kunci</button>
-    <div id="sol17" class="solution-box">
-        <strong>Jawaban: 120</strong><br><br>
-        Luas = \( \frac{1}{2} \cdot AB \cdot AC \cdot \sin A \).<br>
-        \( 12\sqrt{3} = \frac{1}{2} \cdot 6 \cdot 8 \cdot \sin A \).<br>
-        \( 12\sqrt{3} = 24 \sin A \implies \sin A = \frac{1}{2}\sqrt{3} \).<br>
-        \( A = 60^\circ \) atau \( 120^\circ \).<br>
-        Karena tumpul, \( A = 120^\circ \).
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 18 (Inklusi-Eksklusi)</span>
-    <p>Banyaknya bilangan \( \le 2026 \) yang tidak habis dibagi 2, 3, atau 5.</p>
-    <button class="btn-solution" onclick="toggleSolution('sol18')">Lihat Kunci</button>
-    <div id="sol18" class="solution-box">
-        <strong>Jawaban: ~540 (Hitungan Manual)</strong><br><br>
-        Gunakan rumus \( N - (N/2 + N/3 + N/5) + (N/6 + N/10 + N/15) - (N/30) \).<br>
-        Ambil fungsi floor untuk setiap pembagian.<br>
-        Contoh kasar: \( 2026 \times (1 - 1/2)(1 - 1/3)(1 - 1/5) \)<br>
-        \( = 2026 \times \frac{1}{2} \times \frac{2}{3} \times \frac{4}{5} = 2026 \times \frac{8}{30} \approx 540 \).
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 19 (Newton Sum)</span>
-    <p>Akar-akar \( x^3 - 5x + 3 = 0 \). Nilai \( a^4 + b^4 + c^4 \).</p>
-    <button class="btn-solution" onclick="toggleSolution('sol19')">Lihat Kunci</button>
-    <div id="sol19" class="solution-box">
-        <strong>Jawaban: 50</strong><br><br>
-        \( S_1 = 0 \)<br>
-        \( S_2 = S_1^2 - 2e_2 = 0 - 2(-5) = 10 \)<br>
-        \( S_3 = -3(-3) = 9 \) (salah, pakai rumus rekursif \( S_3 - 5S_1 + 3(3) = 0 \to S_3 = -9 \)).<br>
-        \( S_4 - 5S_2 + 3S_1 = 0 \to S_4 - 5(10) + 0 = 0 \to S_4 = 50 \).
-    </div>
-</div>
-
-<div class="question-card">
-    <span class="q-number">Soal 20 (Fungsi Tangga)</span>
-    <p>Nilai \( \lfloor \sqrt{1} \rfloor + \dots + \lfloor \sqrt{100} \rfloor \).</p>
-    <button class="btn-solution" onclick="toggleSolution('sol20')">Lihat Kunci</button>
-    <div id="sol20" class="solution-box">
-        <strong>Jawaban: 615</strong><br><br>
-        Kelompokkan berdasarkan nilai floor:<br>
-        1 (3 kali: 1-3), 2 (5 kali: 4-8), 3 (7 kali: 9-15)...<br>
-        Pola: \( k \) muncul \( 2k+1 \) kali (kecuali batas akhir).<br>
-        Hitung manual: \( 1(3) + 2(5) + 3(7) + \dots + 9(19) + 10(1) \).<br>
-        Total = 615.
+    <strong>Soal 20 (Teori Bilangan - Sisa)</strong><br>
+    Jika \( N = 1! + 2! + 3! + \dots + 2026! \), berapakah sisa pembagian \( N \) jika dibagi 15?
+    <button class="btn-toggle" onclick="toggle('sb10')">Lihat Kunci</button>
+    <div id="sb10" class="solution">
+        <strong>Jawaban: 3</strong><br>
+        Mulai dari \( 5! = 120 \), sudah habis dibagi 15 (karena ada faktor 3 dan 5).<br>
+        Jadi cukup hitung \( 1! + 2! + 3! + 4! \).<br>
+        \( 1 + 2 + 6 + 24 = 33 \).<br>
+        \( 33 \pmod{15} = 3 \).
     </div>
 </div>
 
 <div class="footer">
-    <p>Dibuat untuk latihan persiapan OSN-K 2026. Tetap semangat belajar!</p>
+    <p>Paket B: Variasi Soal Lengkap - Persiapan Menuju Emas OSN-K 2026</p>
 </div>
 
 <script>
-    function toggleSolution(id) {
+    function toggle(id) {
         var x = document.getElementById(id);
         if (x.style.display === "block") {
             x.style.display = "none";
