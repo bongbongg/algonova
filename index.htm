@@ -1,1274 +1,427 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 12: Bankir Cilik</title>
+    <title>Davina's Pro Decimal Quest | Grade 8</title>
     <style>
         :root {
-            --primary: #2e7d32; /* Bank Green */
-            --secondary: #fbc02d; /* Gold Coin */
-            --accent: #1565c0; /* Blue for Logic */
-            --aqila-color: #e91e63; /* Pink for Aqila */
-            --madina-color: #009688; /* Teal for Madina */
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-color: #333;
+            --royal-purple: #6A5ACD;
+            --princess-pink: #FFB6C1;
+            --magic-blue: #87CEEB;
+            --gold: #FFD700;
+            --emerald: #2ecc71;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* Header Section */
-        header {
-            background: linear-gradient(135deg, var(--primary), #1b5e20);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--secondary);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        header .badge {
-            background-color: var(--secondary);
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Sections */
-        .section-title {
-            text-align: center;
-            color: var(--primary);
-            margin: 40px 0 20px;
-            text-transform: uppercase;
-            border-bottom: 2px dashed var(--secondary);
-            padding-bottom: 10px;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Math Board (Blackboard style) */
-        .math-board {
-            background-color: #333;
-            color: #fff;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            border-radius: 8px;
-            border: 4px solid #8d6e63; /* Wood frame */
-            font-size: 1.2rem;
-            text-align: right;
-            width: fit-content;
-            margin: 20px auto;
-            box-shadow: inset 0 0 10px #000;
-        }
-
-        .math-board .highlight {
-            color: var(--secondary);
-            font-weight: bold;
-        }
-
-        .math-board .borrow {
-            color: #ff5252;
-            font-size: 0.8em;
-            text-decoration: line-through;
-            margin-right: 5px;
-        }
-        
-        .math-board .new-val {
-            color: #69f0ae;
-            font-size: 0.8em;
-            vertical-align: super;
-        }
-
-        /* Place Value Table */
-        .pv-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .pv-table th {
-            background-color: var(--accent);
-            color: white;
-            padding: 10px;
-            border: 1px solid #fff;
-        }
-
-        .pv-table td {
-            background-color: #e3f2fd;
-            padding: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border: 1px solid white;
-        }
-
-        /* Student Split */
-        .split-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .student-col {
-            flex: 1;
-            min-width: 300px;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .aqila-zone {
-            background-color: #fce4ec; /* Light Pink */
-            border: 2px solid var(--aqila-color);
-        }
-
-        .madina-zone {
-            background-color: #e0f2f1; /* Light Teal */
-            border: 2px solid var(--madina-color);
-        }
-
-        .student-badge {
-            display: inline-block;
-            padding: 5px 10px;
-            color: white;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .aqila-badge { background-color: var(--aqila-color); }
-        .madina-badge { background-color: var(--madina-color); }
-
-        /* Lesson Plan Section */
-        .lesson-plan {
-            background-color: #fff3e0;
-            border-left: 5px solid #ff9800;
-            padding: 20px;
-            margin-top: 50px;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-        
-        li {
-            margin-bottom: 8px;
-        }
-
-        /* Tips Box */
-        .tips-box {
-            background-color: #fff9c4;
-            border: 1px solid #fbc02d;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="badge">LESSON 12</div>
-    <h1>Misi Bankir Cilik 💰</h1>
-    <p>Operasi Bilangan Besar (Ribuan - Ratusan Ribu)</p>
-</header>
-
-<div class="container">
-
-    <h2 class="section-title">🌟 Section 1: Level Up!</h2>
-    
-    <div class="card">
-        <h3>🚀 Selamat Datang di Level 2</h3>
-        <p><strong>Pola Pikir:</strong> "Kalau bisa menghitung sampai 10, pasti bisa menghitung sampai 100.000, asalkan <u>LURUS</u> dan <u>TELITI</u>."</p>
-        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
-            <div style="text-align: center;">
-                <div style="font-size: 2rem;">🏡</div>
-                <p>Level 1<br><small>1 - 100</small></p>
-            </div>
-            <div style="font-size: 2rem;">➡️</div>
-            <div style="text-align: center;">
-                <div style="font-size: 2rem;">🏦</div>
-                <p>Level 2<br><small>1.000 - 100.000</small></p>
-            </div>
-        </div>
-    </div>
-
-    <h2 class="section-title">🏦 Section 2: Rumah Angka Baru</h2>
-
-    <div class="card">
-        <h3>🗺️ Peta Nilai Tempat</h3>
-        <p>Perhatikan tanda <strong>TITIK (.)</strong> sebagai pemisah Ribuan.</p>
-        <table class="pv-table">
-            <thead>
-                <tr>
-                    <th colspan="3" style="background-color: var(--primary);">Keluarga Ribuan</th>
-                    <th style="background-color: #333;">.</th>
-                    <th colspan="3" style="background-color: var(--accent);">Keluarga Dasar</th>
-                </tr>
-                <tr>
-                    <th>Ratusan Ribu</th>
-                    <th>Puluhan Ribu</th>
-                    <th>Ribuan</th>
-                    <th>.</th>
-                    <th>Ratusan</th>
-                    <th>Puluhan</th>
-                    <th>Satuan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>.</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="tips-box">
-            💡 <strong>Aturan Emas:</strong> Saat menyusun angka ke bawah, <span style="text-decoration: underline; font-weight: bold;">Ratakan Kanan (Luruskan dari Belakang/Satuan)!</span>
-        </div>
-    </div>
-
-    <h2 class="section-title">➕ Section 3: Penjumlahan Raksasa</h2>
-
-    <div class="split-container">
-        <div class="student-col aqila-zone">
-            <span class="student-badge aqila-badge">AQILA (Grade 1)</span>
-            <p><strong>Soal:</strong> 2.300 + 1.500</p>
-            <div class="math-board">
-                  2.300<br>
-                + 1.500<br>
-                -------<br>
-                  <span class="highlight">3.800</span>
-            </div>
-            <p><em>Tips: 0 + 0 tetap 0. Jangan takut sama nol!</em></p>
-        </div>
-
-        <div class="student-col madina-zone">
-            <span class="student-badge madina-badge">MADINA (Grade 2)</span>
-            <p><strong>Soal:</strong> 45.670 + 23.540 (Simpan)</p>
-            <div class="math-board">
-                  <span class="new-val">1</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-                  45.670<br>
-                + 23.540<br>
-                --------<br>
-                  <span class="highlight">69.210</span>
-            </div>
-            <p><em>Tips: 6+5=11. Tulis 1, <strong>Simpan 1</strong> di atap Ribuan.</em></p>
-        </div>
-    </div>
-
-    <div class="card" style="margin-top: 20px;">
-        <h3>⚠️ Hati-hati Beda Digit!</h3>
-        <p>Contoh Salah vs Benar untuk: <strong>12.000 + 500</strong></p>
-        <div style="display: flex; gap: 20px; justify-content: center;">
-            <div class="math-board" style="border-color: red;">
-                ❌ SALAH<br>
-                12.000<br>
-                + 500&nbsp;&nbsp;&nbsp;<br>
-                ------
-            </div>
-            <div class="math-board" style="border-color: green;">
-                ✅ BENAR<br>
-                12.000<br>
-                +    500<br>
-                ------<br>
-                12.500
-            </div>
-        </div>
-    </div>
-
-    <h2 class="section-title">➖ Section 4: Pengurangan & Jebakan Nol</h2>
-
-    <div class="card">
-        <h3>🔥 Teknik Pinjam Berantai (The Zero Trap)</h3>
-        <p>Mantra Madina: <em>"Yang meminjam jadi 10, nol yang dilewati jadi 9."</em></p>
-        
-        <div style="text-align: center;">
-            <p>Soal: <strong>5.000 - 250</strong></p>
-            <div class="math-board">
-                  <span class="borrow">5</span><span class="new-val">4</span> <span class="borrow">0</span><span class="new-val">9</span> <span class="borrow">0</span><span class="new-val">10</span><br>
-                -   2 5  0<br>
-                ----------<br>
-                  <span class="highlight">4.750</span>
-            </div>
-        </div>
-    </div>
-
-    <h2 class="section-title">✍️ Section 5: Guided Practice</h2>
-
-    <div class="split-container">
-        <div class="student-col aqila-zone">
-            <span class="student-badge aqila-badge">AQILA MISI</span>
-            <ul>
-                <li><strong>Soal 1:</strong> 4.000 - 1.000 = ...</li>
-                <li><strong>Soal 2:</strong> 5.200 - 1.100 = ...</li>
-                <li><strong>HOTS:</strong> Punya Rp 2.000, dikasih Rp 2.000, beli permen Rp 1.000. Sisa?</li>
-            </ul>
-        </div>
-        <div class="student-col madina-zone">
-            <span class="student-badge madina-badge">MADINA MISI</span>
-            <ul>
-                <li><strong>Soal 1:</strong> 20.000 - 5.500 = ...</li>
-                <li><strong>Soal 2:</strong> 100.000 - 1 = ... (Hati-hati!)</li>
-                <li><strong>HOTS:</strong> Tabungan Rp 100.000, beli mainan Rp 45.000. Sisa?</li>
-            </ul>
-        </div>
-    </div>
-
-    <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misi Bankir Cilik: Operasi Hitung</title>
-    <style>
-        :root {
-            --primary: #2e7d32;
-            --secondary: #fbc02d;
-            --aqila: #e91e63;
-            --madina: #009688;
-            --bg: #e8f5e9;
-            --correct: #4caf50;
-            --wrong: #f44336;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        /* Dashboard Header */
-        .dashboard-header {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 5px solid var(--secondary);
-        }
-
-        .score-box {
-            background: var(--secondary);
-            color: #000;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Mission Container */
-        .mission-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .student-column {
-            flex: 1;
-            min-width: 320px;
-            max-width: 500px;
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .header-aqila { border-top: 10px solid var(--aqila); }
-        .header-madina { border-top: 10px solid var(--madina); }
-
-        .column-title {
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            padding: 5px;
-            border-radius: 5px;
-            color: white;
-        }
-        
-        .bg-aqila { background-color: var(--aqila); }
-        .bg-madina { background-color: var(--madina); }
-
-        /* Question Cards */
-        .q-card {
-            background: #f9f9f9;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            transition: all 0.3s;
-        }
-
-        .q-card:hover { border-color: var(--primary); }
-        .q-card.solved { border-color: var(--correct); background-color: #e8f5e9; opacity: 0.8; }
-
-        .q-text {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-            text-align: right;
-        }
-
-        button.check-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        button.check-btn:hover { background-color: #1b5e20; }
-        button.check-btn:disabled { background-color: #ccc; cursor: not-allowed; }
-
-        .feedback {
-            margin-top: 5px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            min-height: 20px;
-        }
-
-        .feedback.correct { color: var(--correct); }
-        .feedback.wrong { color: var(--wrong); }
-
-        /* Progress Bar */
-        .progress-wrapper {
-            margin-top: 20px;
-            background: #eee;
-            border-radius: 10px;
-            height: 10px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-
-        /* Modal Reward */
-        #rewardModal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            animation: popIn 0.5s;
-        }
-        @keyframes popIn {
-            from {transform: scale(0);}
-            to {transform: scale(1);}
-        }
-    </style>
-</head>
-<body>
-
-    <div class="dashboard-header">
-        <div>
-            <h1 style="margin:0;">🏦 Misi Bankir Cilik</h1>
-            <p style="margin:0; color: #666;">Isi jawaban dengan teliti. Boleh pakai titik (4.500) atau tidak (4500).</p>
-        </div>
-        <div class="score-box">
-            <span>⭐</span> <span id="score">0</span> XP
-        </div>
-    </div>
-
-    <div class="mission-container">
-        
-        <div class="student-column header-aqila">
-            <div class="column-title bg-aqila">Misi Aqila (Grade 1)</div>
-            
-            <div class="q-card" id="card-a1">
-                <div class="q-text">1. 2.000 + 3.000 = ...</div>
-                <div class="input-group">
-                    <input type="text" id="ans-a1" placeholder="Jawab...">
-                    <button class="check-btn" onclick="checkAnswer('a1', 5000)">Cek</button>
-                </div>
-                <div class="feedback" id="feed-a1"></div>
-            </div>
-
-            <div class="q-card" id="card-a2">
-                <div class="q-text">2. 4.500 - 500 = ...</div>
-                <div class="input-group">
-                    <input type="text" id="ans-a2" placeholder="Jawab...">
-                    <button class="check-btn" onclick="checkAnswer('a2', 4000)">Cek</button>
-                </div>
-                <div class="feedback" id="feed-a2"></div>
-            </div>
-
-            <div class="q-card" id="card-a3">
-                <div class="q-text">3. 1.200 + 1.200 = ...</div>
-                <div class="input-group">
-                    <input type="text" id="ans-a3" placeholder="Jawab...">
-                    <button class="check-btn" onclick="checkAnswer('a3', 2400)">Cek</button>
-                </div>
-                <div class="feedback" id="feed-a3"></div>
-            </div>
-
-            <div class="progress-wrapper"><div class="progress-fill" id="prog-a"></div></div>
-            <p style="text-align:center; font-size:0.8rem;">Progress Aqila</p>
-        </div>
-
-        <div class="student-column header-madina">
-            <div class="column-title bg-madina">Misi Madina (Grade 2)</div>
-            
-            <div class="q-card" id="card-m1">
-                <div class="q-text">1. 45.000 + 25.000 = ...</div>
-                <div class="input-group">
-                    <input type="text" id="ans-m1" placeholder="Jawab...">
-                    <button class="check-btn" onclick="checkAnswer('m1', 70000)">Cek</button>
-                </div>
-                <div class="feedback" id="feed-m1"></div>
-            </div>
-
-            <div class="q-card" id="card-m2">
-                <div class="q-text">2. 10.000 - 1.250 = ...</div>
-                <div class="input-group">
-                    <input type="text" id="ans-m2" placeholder="Jawab...">
-                    <button class="check-btn" onclick="checkAnswer('m2', 8750)">Cek</button>
-                </div>
-                <div class="feedback" id="feed-m2"></div>
-            </div>
-
-            <div class="q-card" id="card-m3">
-                <div class="q-text">3. 100.000 - 50 = ...</div>
-                <div class="input-group">
-                    <input type="text" id="ans-m3" placeholder="Jawab...">
-                    <button class="check-btn" onclick="checkAnswer('m3', 99950)">Cek</button>
-                </div>
-                <div class="feedback" id="feed-m3"></div>
-            </div>
-
-            <div class="progress-wrapper"><div class="progress-fill" id="prog-m"></div></div>
-            <p style="text-align:center; font-size:0.8rem;">Progress Madina</p>
-        </div>
-
-    </div>
-
-    <div id="rewardModal">
-        <div class="modal-content">
-            <div style="font-size: 4rem;">🏆</div>
-            <h2>MISI SELESAI!</h2>
-            <p>Kamu adalah Bankir Hebat!</p>
-            <button class="check-btn" onclick="document.getElementById('rewardModal').style.display='none'">Tutup</button>
-        </div>
-    </div>
-
-    <script>
-        let score = 0;
-        let aqilaCount = 0;
-        let madinaCount = 0;
-
-        function formatNumber(num) {
-            // Menghapus titik, koma, atau spasi agar input fleksibel
-            return num.toString().replace(/[\.,\s]/g, '');
-        }
-
-        function checkAnswer(id, correctVal) {
-            const inputEl = document.getElementById('ans-' + id);
-            const feedEl = document.getElementById('feed-' + id);
-            const cardEl = document.getElementById('card-' + id);
-            const btnEl = document.querySelector(`#card-${id} button`);
-
-            let userVal = formatNumber(inputEl.value);
-            
-            if (userVal === "") {
-                feedEl.textContent = "Isi dulu ya!";
-                feedEl.className = "feedback wrong";
-                return;
-            }
-
-            if (parseInt(userVal) === correctVal) {
-                // BENAR
-                feedEl.textContent = "✅ Benar! Hebat!";
-                feedEl.className = "feedback correct";
-                cardEl.classList.add('solved');
-                btnEl.disabled = true;
-                inputEl.disabled = true;
-                
-                // Update Score
-                score += 100;
-                document.getElementById('score').innerText = score;
-
-                // Update Progress
-                if (id.startsWith('a')) {
-                    aqilaCount++;
-                    document.getElementById('prog-a').style.width = (aqilaCount / 3 * 100) + "%";
-                } else {
-                    madinaCount++;
-                    document.getElementById('prog-m').style.width = (madinaCount / 3 * 100) + "%";
-                }
-
-                // Check Win
-                if (aqilaCount === 3 && madinaCount === 3) {
-                    setTimeout(() => {
-                        document.getElementById('rewardModal').style.display = "flex";
-                    }, 1000);
-                }
-
-            } else {
-                // SALAH
-                feedEl.textContent = "❌ Coba lagi, cek hitungannya.";
-                feedEl.className = "feedback wrong";
-                
-                // Animasi Shake
-                cardEl.style.transform = "translateX(5px)";
-                setTimeout(() => { cardEl.style.transform = "translateX(0px)"; }, 100);
-            }
-        }
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misi Bankir Cilik: Side by Side</title>
-    <style>
-        :root {
-            --primary: #2e7d32;
-            --secondary: #fbc02d;
-            --aqila: #e91e63; /* Pink */
-            --aqila-bg: #fce4ec;
-            --madina: #009688; /* Teal */
-            --madina-bg: #e0f2f1;
-            --bg: #f4f7f6;
-            --correct: #4caf50;
-            --wrong: #f44336;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        /* HEADER */
-        .dashboard-header {
-            background: white;
-            border-radius: 12px;
-            padding: 15px 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 4px solid var(--secondary);
-        }
-
-        .score-badge {
-            background: var(--secondary);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 1.2rem;
-        }
-
-        /* LAYOUT KIRI KANAN (SPLIT SCREEN) */
-        .mission-container {
-            display: flex;
-            flex-direction: row; /* Memaksa ke samping */
-            gap: 20px;
-            align-items: flex-start; /* Rata atas */
-        }
-
-        .student-column {
-            flex: 1; /* Membagi lebar sama rata (50:50) */
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            /* Agar tidak terlalu gepeng di layar kecil */
-            min-width: 0; 
-        }
-
-        /* KHUSUS AQILA (KIRI) */
-        .col-aqila {
-            border-top: 8px solid var(--aqila);
-            background-color: var(--aqila-bg); /* Sedikit pink */
-        }
-
-        /* KHUSUS MADINA (KANAN) */
-        .col-madina {
-            border-top: 8px solid var(--madina);
-            background-color: var(--madina-bg); /* Sedikit hijau */
-        }
-
-        .column-header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px dashed rgba(0,0,0,0.1);
-        }
-
-        .badge-name {
-            padding: 5px 15px;
-            border-radius: 5px;
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-        }
-        
-        .bg-aqila { background-color: var(--aqila); }
-        .bg-madina { background-color: var(--madina); }
-
-        /* KARTU SOAL */
-        .q-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .q-text {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-family: 'Courier New', monospace;
-            color: #444;
-        }
-
-        .input-wrapper {
-            display: flex;
-            gap: 8px;
-        }
-
-        input {
-            flex: 1;
-            padding: 8px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            text-align: center;
-            width: 100%;
-        }
-
-        button.btn-check {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 6px;
-            background-color: #333;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
-        button.btn-check:hover { background-color: var(--primary); }
-        button.btn-check:disabled { background-color: #ccc; cursor: default; }
-
-        .feedback {
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-top: 8px;
-            min-height: 1.2em;
-        }
-        .correct { color: var(--correct); }
-        .wrong { color: var(--wrong); }
-
-        /* RESPONSIVE: Balik ke tumpuk (stack) kalau layar HP */
-        @media (max-width: 768px) {
-            .mission-container {
-                flex-direction: column;
-            }
-        }
-
-        /* MODAL */
-        #modal {
-            display
-            
-            
-            
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misi Cerita: Detektif Angka</title>
-    <style>
-        :root {
-            --primary: #3f51b5;
-            --aqila: #e91e63;
-            --madina: #009688;
-            --bg: #f0f4c3;
-            --card-bg: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            background: #fdf5f5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-        }
-
-        .game-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .game-header h1 {
-            color: #333;
             margin: 0;
-            font-size: 2rem;
-            text-transform: uppercase;
+            padding: 20px;
         }
 
-        /* PROGRESS BAR */
-        .progress-container {
+        .header {
+            background: var(--royal-purple);
+            color: white;
             width: 100%;
-            max-width: 600px;
-            background-color: #ddd;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            height: 15px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--aqila), var(--madina));
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-
-        /* STAGE CONTAINER */
-        .stage-container {
-            display: flex;
-            gap: 20px;
-            width: 100%;
-            max-width: 900px;
-            justify-content: center;
-        }
-
-        /* AVATAR CARDS */
-        .avatar-card {
-            width: 150px;
+            max-width: 800px;
+            text-align: center;
             padding: 20px;
             border-radius: 15px;
-            background: white;
-            text-align: center;
-            opacity: 0.5;
-            transform: scale(0.9);
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
         }
 
-        .avatar-card.active {
-            opacity: 1;
-            transform: scale(1.1);
-            border: 4px solid;
-            z-index: 10;
-        }
-
-        .aqila-card.active { border-color: var(--aqila); box-shadow: 0 0 20px rgba(233, 30, 99, 0.4); }
-        .madina-card.active { border-color: var(--madina); box-shadow: 0 0 20px rgba(0, 150, 136, 0.4); }
-
-        .avatar-emoji { font-size: 3rem; display: block; margin-bottom: 10px; }
-        .player-name { font-weight: bold; font-size: 1.2rem; }
-
-        /* STORY BOX (CENTER) */
-        .story-box {
-            flex: 2;
+        .game-card {
             background: white;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
-            position: relative;
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            max-width: 600px;
+            width: 100%;
+            border: 3px solid var(--magic-blue);
         }
 
-        .story-text {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            color: #444;
-        }
-
-        .question-highlight {
-            background-color: #fffde7;
-            border: 2px dashed #fbc02d;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        .category-tag {
+            background: var(--princess-pink);
+            padding: 5px 15px;
+            border-radius: 20px;
             font-weight: bold;
-            font-family: 'Courier New', monospace;
-            color: #333;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
         }
 
-        /* INPUT AREA */
-        .input-area {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
+        .question-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: var(--royal-purple);
         }
 
-        input {
-            padding: 15px;
-            font-size: 1.2rem;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            width: 150px;
-            text-align: center;
-            outline: none;
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
-
-        input:focus { border-color: var(--primary); }
 
         button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.1s;
-        }
-
-        button:hover { background-color: #303f9f; }
-        button:active { transform: scale(0.95); }
-
-        /* FEEDBACK */
-        .feedback-msg {
-            margin-top: 15px;
-            font-weight: bold;
+            padding: 15px;
             font-size: 1.1rem;
-            min-height: 25px;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            background: white;
+            border: 2px solid var(--magic-blue);
+            transition: all 0.2s;
+            font-weight: 600;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .stage-container { flex-direction: column; align-items: center; }
-            .avatar-card { display: none; } /* Hide side avatars on mobile to focus on story */
-            .story-box { width: 90%; }
+        button:hover {
+            background: var(--magic-blue);
+            color: white;
+            transform: translateY(-3px);
         }
 
-        /* MODAL END */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            display: none; justify-content: center; align-items: center; z-index: 100;
+        .score-box {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--royal-purple);
         }
-        .modal-content {
-            background: white; padding: 40px; border-radius: 20px; text-align: center;
-            animation: zoomIn 0.5s;
-        }
-        @keyframes zoomIn { from {transform: scale(0);} to {transform: scale(1);} }
 
+        #feedback {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            min-height: 1.5rem;
+            font-weight: bold;
+        }
+
+        .success { color: var(--emerald); }
+        .error { color: #e74c3c; }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        #progress {
+            width: 0%;
+            height: 100%;
+            background: var(--emerald);
+            transition: width 0.3s;
+        }
     </style>
 </head>
 <body>
 
-    <div class="game-header">
-        <h1>🕵️‍♀️ Misi Penyelamatan Bank</h1>
-        <p>Bantu Manajer Bank membereskan kekacauan angka!</p>
-    </div>
+<div class="header">
+    <h1>✨ Davina's Advanced Quest ✨</h1>
+    <p>Tingkat 8: Master Nilai Tempat & Logika Desimal</p>
+</div>
 
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davina's Royal Match Quest</title>
+    <style>
+        :root {
+            --royal-purple: #6A5ACD;
+            --princess-pink: #FFB6C1;
+            --magic-blue: #87CEEB;
+            --gold: #FFD700;
+            --emerald: #2ecc71;
+        }
 
-    <div class="stage-container">
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #fdf5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .game-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            border: 3px solid var(--royal-purple);
+        }
+
+        h2 { color: var(--royal-purple); margin-bottom: 5px; }
+        .instruction { color: #666; margin-bottom: 20px; }
+
+        .matching-area {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 30px;
+            padding: 0 50px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 2;
+        }
+
+        .item {
+            padding: 15px 25px;
+            background: white;
+            border: 2px solid var(--magic-blue);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            min-width: 150px;
+        }
+
+        .item:hover { transform: scale(1.05); border-color: var(--royal-purple); }
+        .item.selected { background: var(--magic-blue); color: white; border-color: var(--royal-purple); }
+        .item.matched { background: var(--emerald); color: white; border-color: var(--emerald); cursor: default; }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #reset-btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: var(--princess-pink);
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <h2>✨ Tarik Garis Ajaib ✨</h2>
+    <p class="instruction">Davina, klik angka di kiri lalu klik pasangannya yang benar di kanan!</p>
+    
+    <div class="matching-area" id="matching-area">
+        <canvas id="canvas"></canvas>
         
-        <div class="avatar-card aqila-card" id="aqilaPanel">
-            <span class="avatar-emoji">👧</span>
-            <div class="player-name">AQILA</div>
-            <small>Agent Ribuan</small>
+        <div class="column" id="left-col">
+            <div class="item" data-id="1" data-side="left">0,7</div>
+            <div class="item" data-id="2" data-side="left">0,07</div>
+            <div class="item" data-id="3" data-side="left">0,77</div>
+            <div class="item" data-id="4" data-side="left">0,007</div>
         </div>
 
-        <div class="story-box">
-            <div id="storyContent">
-                </div>
-            
-            <div class="input-area">
-                <input type="text" id="answerInput" placeholder="Jawab..." autocomplete="off">
-                <button onclick="checkAnswer()">Kirim</button>
-            </div>
-            <div class="feedback-msg" id="feedback"></div>
-        </div>
-
-        <div class="avatar-card madina-card" id="madinaPanel">
-            <span class="avatar-emoji">🧕</span>
-            <div class="player-name">MADINA</div>
-            <small>Agent Ratusan Ribu</small>
-        </div>
-
-    </div>
-
-    <div class="modal-overlay" id="finishModal">
-        <div class="modal-content">
-            <div style="font-size: 5rem;">🎉</div>
-            <h2>MISI SUKSES!</h2>
-            <p>Bank Kota Aman Terkendali.</p>
-            <p><strong>Skor Akhir: 100/100</strong></p>
-            <button onclick="location.reload()">Main Lagi</button>
+        <div class="column" id="right-col">
+            <div class="item" data-id="3" data-side="right">Tujuh Puluh Tujuh Perseratus</div>
+            <div class="item" data-id="1" data-side="right">Tujuh Persepuluh</div>
+            <div class="item" data-id="4" data-side="right">Tujuh Perseribu</div>
+            <div class="item" data-id="2" data-side="right">Tujuh Perseratus</div>
         </div>
     </div>
 
-    <script>
-        // DATABASE SOAL CERITA (HOTS)
-        const levels = [
-            {
-                turn: "aqila",
-                story: "Seorang anak ingin membeli es krim seharga <strong>Rp 3.000</strong>. Dia membayar dengan uang <strong>Rp 5.000</strong>. Berapa kembalian yang harus diberikan kasir?",
-                q: "5.000 - 3.000 = ...",
-                ans: 2000
-            },
-            {
-                turn: "madina",
-                story: "Mesin ATM rusak! Pak Budi mau mengambil <strong>Rp 100.000</strong>. Tapi saldo di kartu Pak Budi cuma ada <strong>Rp 45.000</strong>. Berapa kurangnya uang Pak Budi?",
-                q: "100.000 - 45.000 = ...",
-                ans: 55000
-            },
-            {
-                turn: "aqila",
-                story: "Di dompet ada 2 lembar uang <strong>Rp 2.000</strong>. Tiba-tiba Nenek memberi lagi 1 lembar <strong>Rp 1.000</strong>. Berapa total uang sekarang?",
-                q: "(2.000 + 2.000) + 1.000 = ...",
-                ans: 5000
-            },
-            {
-                turn: "madina",
-                story: "Ibu menabung <strong>Rp 50.000</strong> hari Senin. Hari Selasa menabung lagi <strong>Rp 25.500</strong>. Berapa total tabungan Ibu sekarang?",
-                q: "50.000 + 25.500 = ...",
-                ans: 75500
-            },
-            {
-                turn: "aqila",
-                story: "Tebak Angka! Aku adalah angka. Jika aku ditambah <strong>500</strong>, aku menjadi <strong>3.000</strong>. Siapakah aku?",
-                q: "... + 500 = 3.000",
-                ans: 2500
-            },
-            {
-                turn: "madina",
-                story: "Jebakan Nol! Kakak punya uang <strong>Rp 10.000</strong>. Dia membeli permen seharga <strong>Rp 1.500</strong>. Berapa sisa uang kakak? (Hati-hati meminjam!)",
-                q: "10.000 - 1.500 = ...",
-                ans: 8500
-            },
-            {
-                turn: "aqila",
-                story: "Aqila punya uang <strong>Rp 4.000</strong>. Madina punya uang <strong>Rp 2.000</strong>. Berapa selisih (beda) uang mereka?",
-                q: "4.000 - 2.000 = ...",
-                ans: 2000
-            },
-            {
-                turn: "madina",
-                story: "Soal Logika: Ayah punya 5 lembar uang <strong>Rp 20.000</strong>. Berapa total nilai uang Ayah?",
-                q: "20.000 + 20.000 + 20.000 + 20.000 + 20.000",
-                ans: 100000
-            },
-            {
-                turn: "aqila",
-                story: "Harga mainan mobil <strong>Rp 5.500</strong>. Harga boneka <strong>Rp 5.050</strong>. Mana yang lebih mahal? Tulis angkanya.",
-                q: "Pilih angka yang lebih besar.",
-                ans: 5500
-            },
-            {
-                turn: "both", // Special boss stage
-                story: "FINAL BOSS! Kerjasama Tim. Aqila punya <strong>Rp 500</strong>. Madina punya <strong>Rp 99.500</strong>. Jika uang kalian digabung, berapa jumlahnya?",
-                q: "500 + 99.500 = ...",
-                ans: 100000
-            }
-        ];
+    <div id="msg" style="margin-top: 20px; font-weight: bold; color: var(--emerald);"></div>
+    <button id="reset-btn" onclick="resetGame()">Ulangi Misi</button>
+</div>
 
-        let currentLevel = 0;
+<script>
+    let selectedLeft = null;
+    let matches = [];
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
 
-        function cleanNum(str) {
-            return str.toString().replace(/[\.,\s]/g, '');
-        }
+    function initCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
 
-        function formatDisplay(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
+    window.addEventListener('resize', initCanvas);
+    setTimeout(initCanvas, 100);
 
-        function loadLevel() {
-            const data = levels[currentLevel];
-            const aqilaPanel = document.getElementById('aqilaPanel');
-            const madinaPanel = document.getElementById('madinaPanel');
-            const storyDiv = document.getElementById('storyContent');
-            const input = document.getElementById('answerInput');
-            const feedback = document.getElementById('feedback');
+    document.querySelectorAll('.item').forEach(item => {
+        item.addEventListener('click', function() {
+            if (this.classList.contains('matched')) return;
 
-            // Reset UI
-            input.value = "";
-            input.disabled = false;
-            input.focus();
-            feedback.innerHTML = "";
-            
-            // Set Active Player Visual
-            aqilaPanel.classList.remove('active');
-            madinaPanel.classList.remove('active');
-
-            let turnText = "";
-            if(data.turn === 'aqila') {
-                aqilaPanel.classList.add('active');
-                turnText = "<span style='color:var(--aqila); font-weight:bold;'>Giliran AQILA</span>";
-                input.style.borderColor = "var(--aqila)";
-            } else if (data.turn === 'madina') {
-                madinaPanel.classList.add('active');
-                turnText = "<span style='color:var(--madina); font-weight:bold;'>Giliran MADINA</span>";
-                input.style.borderColor = "var(--madina)";
+            if (this.dataset.side === 'left') {
+                if (selectedLeft) selectedLeft.classList.remove('selected');
+                selectedLeft = this;
+                this.classList.add('selected');
             } else {
-                aqilaPanel.classList.add('active');
-                madinaPanel.classList.add('active');
-                turnText = "<span style='color:#673ab7; font-weight:bold;'>KERJASAMA TIM (BERDUA)</span>";
-                input.style.borderColor = "#673ab7";
-            }
-
-            // Set Content
-            storyDiv.innerHTML = `
-                <div style="margin-bottom:10px; font-size:0.9rem;">SOAL ${currentLevel + 1} / 10</div>
-                <div>${turnText}</div>
-                <p class="story-text">${data.story}</p>
-                <div class="question-highlight">${data.q}</div>
-            `;
-            
-            // Update Progress Bar
-            document.getElementById('progressBar').style.width = (currentLevel / levels.length * 100) + "%";
-        }
-
-        function checkAnswer() {
-            const input = document.getElementById('answerInput');
-            const feedback = document.getElementById('feedback');
-            const userAns = cleanNum(input.value);
-            const correctAns = levels[currentLevel].ans;
-
-            if(!userAns) {
-                feedback.innerHTML = "<span style='color:red'>Isi jawabannya dulu ya!</span>";
-                return;
-            }
-
-            if(parseInt(userAns) === correctAns) {
-                // Correct
-                feedback.innerHTML = "<span style='color:green'>✅ BENAR! Lanjut...</span>";
-                input.disabled = true;
-                
-                // Delay next level
-                setTimeout(() => {
-                    currentLevel++;
-                    if(currentLevel < levels.length) {
-                        loadLevel();
+                if (selectedLeft) {
+                    if (selectedLeft.dataset.id === this.dataset.id) {
+                        // MATCH!
+                        this.classList.add('matched');
+                        selectedLeft.classList.add('matched');
+                        selectedLeft.classList.remove('selected');
+                        matches.push({
+                            from: selectedLeft,
+                            to: this
+                        });
+                        drawLines();
+                        selectedLeft = null;
+                        checkWin();
                     } else {
-                        document.getElementById('progressBar').style.width = "100%";
-                        document.getElementById('finishModal').style.display = 'flex';
+                        // WRONG
+                        alert("Ups! Coba periksa nilai tempatnya lagi, Davina!");
+                        selectedLeft.classList.remove('selected');
+                        selectedLeft = null;
                     }
-                }, 1000);
-
-            } else {
-                // Wrong
-                feedback.innerHTML = "<span style='color:red'>❌ Ups, coba hitung lagi pelan-pelan.</span>";
-                input.value = "";
-                input.focus();
-            }
-        }
-
-        // Support Enter Key
-        document.getElementById("answerInput").addEventListener("keyup", function(event) {
-            if (event.key === "Enter") {
-                checkAnswer();
+                }
             }
         });
+    });
 
-        // Start Game
-        loadLevel();
+    function drawLines() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#2ecc71';
+        ctx.lineWidth = 4;
 
-    </script>
+        matches.forEach(match => {
+            const fromRect = match.from.getBoundingClientRect();
+            const toRect = match.to.getBoundingClientRect();
+            const containerRect = document.getElementById('matching-area').getBoundingClientRect();
+
+            const startX = fromRect.right - containerRect.left;
+            const startY = fromRect.top + fromRect.height / 2 - containerRect.top;
+            const endX = toRect.left - containerRect.left;
+            const endY = toRect.top + toRect.height / 2 - containerRect.top;
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.stroke();
+        });
+    }
+
+    function checkWin() {
+        if (matches.length === 4) {
+            document.getElementById('msg').innerText = "🎉 SEMPURNA! Davina telah memasangkan semuanya! 🎉";
+        }
+    }
+
+    function resetGame() {
+        matches = [];
+        selectedLeft = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.querySelectorAll('.item').forEach(i => i.className = 'item');
+        document.getElementById('msg').innerText = "";
+    }
+</script>
+
 </body>
 </html>
+<div class="game-card">
+    <div id="category" class="category-tag">Loading...</div>
+    <div class="progress-bar"><div id="progress"></div></div>
+    <div id="question" class="question-text">Menyiapkan tantangan...</div>
+    <div id="options" class="options-grid"></div>
+    <div id="feedback"></div>
+    <div class="score-box">Skor: <span id="score">0</span> / 200</div>
+</div>
+
+<script>
+    let currentIdx = 0;
+    let score = 0;
+
+    const database = [
+        // NILAI TEMPAT
+        { cat: "NILAI TEMPAT", q: "Manakah angka di posisi PERSERATUS pada bilangan 12,345?", opt: ["3", "4", "5", "2"], ans: "4" },
+        { cat: "NILAI TEMPAT", q: "Posisi angka 7 pada 0,007 adalah...", opt: ["Persepuluh", "Perseratus", "Perseribu", "Satuan"], ans: "Perseribu" },
+        { cat: "NILAI TEMPAT", q: "Tuliskan dalam desimal: Sembilan persepuluh", opt: ["0,09", "9,0", "0,9", "0,009"], ans: "0,9" },
+        { cat: "NILAI TEMPAT", q: "Pada 5,61, angka manakah yang paling dekat nilainya dengan satuan?", opt: ["6 (Persepuluh)", "1 (Perseratus)", "Semua sama", "Tidak ada"], ans: "6 (Persepuluh)" },
+        { cat: "NILAI TEMPAT", q: "0,05 sama nilainya dengan...", opt: ["5/10", "5/100", "5/1000", "50/10"], ans: "5/100" },
+
+        // MEMBANDINGKAN
+        { cat: "BATTLE ROUND", q: "Bandingkan: 0,88 ..... 0,9", opt: [">", "<", "=", "≈"], ans: "<" },
+        { cat: "BATTLE ROUND", q: "Manakah yang paling BESAR?", opt: ["0,125", "0,2", "0,19", "0,099"], ans: "0,2" },
+        { cat: "BATTLE ROUND", q: "0,5 ..... 0,500", opt: [">", "<", "=", "≠"], ans: "=" },
+        { cat: "BATTLE ROUND", q: "Bandingkan: 0,004 ..... 0,04", opt: [">", "<", "=", "≈"], ans: "<" },
+        { cat: "BATTLE ROUND", q: "Manakah yang paling KECIL?", opt: ["0,1", "0,01", "0,001", "0,11"], ans: "0,001" },
+
+        // MENGURUTKAN
+        { cat: "ROYAL LINEUP", q: "Urutan dari TERKECIL: 0,4 ; 0,04 ; 0,44", opt: ["0,4 ; 0,04 ; 0,44", "0,04 ; 0,4 ; 0,44", "0,44 ; 0,4 ; 0,04", "0,04 ; 0,44 ; 0,4"], ans: "0,04 ; 0,4 ; 0,44" },
+        { cat: "ROYAL LINEUP", q: "Urutan dari TERBESAR: 1,5 ; 1,05 ; 1,55", opt: ["1,55 ; 1,5 ; 1,05", "1,5 ; 1,55 ; 1,05", "1,05 ; 1,5 ; 1,55", "1,55 ; 1,05 ; 1,5"], ans: "1,55 ; 1,5 ; 1,05" },
+        { cat: "ROYAL LINEUP", q: "Urutan dari TERKECIL: 0,1 ; 0,09 ; 0,11", opt: ["0,1 ; 0,09 ; 0,11", "0,11 ; 0,1 ; 0,09", "0,09 ; 0,1 ; 0,11", "0,09 ; 0,11 ; 0,1"], ans: "0,09 ; 0,1 ; 0,11" },
+        { cat: "ROYAL LINEUP", q: "Urutan dari TERBESAR: 0,6 ; 0,06 ; 0,66", opt: ["0,66 ; 0,6 ; 0,06", "0,6 ; 0,66 ; 0,06", "0,06 ; 0,6 ; 0,66", "0,66 ; 0,06 ; 0,6"], ans: "0,66 ; 0,6 ; 0,06" },
+        { cat: "ROYAL LINEUP", q: "Manakah barisan yang sudah urut membesar?", opt: ["0,2 ; 0,3 ; 0,25", "0,1 ; 0,15 ; 0,2", "0,5 ; 0,05 ; 0,005", "0,4 ; 0,41 ; 0,04"], ans: "0,1 ; 0,15 ; 0,2" },
+
+        // HOTS (LOGIKA)
+        { cat: "QUEEN'S LOGIC (HOTS)", q: "Jika x = 0,5 dan y = 0,499, maka...", opt: ["x < y", "x > y", "x = y", "x + y = 1"], ans: "x > y" },
+        { cat: "QUEEN'S LOGIC (HOTS)", q: "Angka desimal yang terletak di ANTARA 0,7 dan 0,8 adalah...", opt: ["0,75", "0,69", "0,81", "0,7"], ans: "0,75" },
+        { cat: "QUEEN'S LOGIC (HOTS)", q: "Davina lari 10,2 detik. Jasmine 10,19 detik. Siapa yang menang (lebih cepat)?", opt: ["Davina", "Jasmine", "Seri", "Tidak bisa ditentukan"], ans: "Jasmine" },
+        { cat: "QUEEN'S LOGIC (HOTS)", q: "Manakah yang benar tentang 0,123 dan 0,2?", opt: ["0,123 lebih besar karena digitnya banyak", "0,2 lebih besar karena persepuluhnya 2", "Keduanya sama", "0,2 lebih kecil"], ans: "0,2 lebih besar karena persepuluhnya 2" },
+        { cat: "QUEEN'S LOGIC (HOTS)", q: "Jika kita menambahkan 0 di belakang 0,70 menjadi 0,700, nilainya akan...", opt: ["Bertambah besar", "Bertambah kecil", "Tetap sama", "Menjadi ribuan"], ans: "Tetap sama" }
+    ];
+
+    function loadQuestion() {
+        if (currentIdx >= database.length) {
+            document.getElementById('question').innerText = "🏰 Petualangan Selesai! Davina Luar Biasa!";
+            document.getElementById('options').innerHTML = "";
+            document.getElementById('category').innerText = "TAMAT";
+            return;
+        }
+
+        const data = database[currentIdx];
+        document.getElementById('category').innerText = data.cat;
+        document.getElementById('question').innerText = data.q;
+        document.getElementById('progress').style.width = (currentIdx / database.length * 100) + "%";
+        
+        const optionsDiv = document.getElementById('options');
+        optionsDiv.innerHTML = "";
+        data.opt.forEach(o => {
+            const btn = document.createElement('button');
+            btn.innerText = o;
+            btn.onclick = () => checkAns(o);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAns(choice) {
+        const feedback = document.getElementById('feedback');
+        if (choice === database[currentIdx].ans) {
+            score += 10;
+            feedback.innerText = "✅ Benar! Davina Cerdas!";
+            feedback.className = "success";
+        } else {
+            feedback.innerText = "❌ Ups! Ingat strategi Nol Bayangan.";
+            feedback.className = "error";
+        }
+
+        currentIdx++;
+        document.getElementById('score').innerText = score;
+        setTimeout(() => {
+            feedback.innerText = "";
+            loadQuestion();
+        }, 1500);
+    }
+
+    loadQuestion();
+</script>
+
+</body>
+</html>
+
+
+
